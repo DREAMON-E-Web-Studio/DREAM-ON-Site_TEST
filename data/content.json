@@ -1,0 +1,93 @@
+{
+  "site": {
+    "title": "DREAM ON!",
+    "subtitle": "K-POP COVER DANCE FES",
+    "description": "東京で開催されるK-POPカバーダンスの祭典",
+    "email": "k-dancefes@shibuya-o.com",
+    "organizer": "株式会社シブヤテレビジョン",
+    "organizer_url": "https://www.sib.tv/",
+    "privacy_url": "https://www.sib.tv/privacy/",
+    "social": {
+      "youtube": "https://www.youtube.com/@dreamon_kpop",
+      "twitter": "https://twitter.com/DreamOn_Kpop",
+      "instagram": "https://www.instagram.com/dreamon_kpop/",
+      "facebook": "https://www.facebook.com/Dreamon_kpop-141369863104383/"
+    }
+  },
+  "event": {
+    "vol": "30",
+    "anniversary": "15周年",
+    "catchcopy": "ついに15周年・30回目！",
+    "date": "2026.01.25（Sun）",
+    "venue": "Spotify O-EAST",
+    "venue_url": "https://www.shibuya-o.com/o-east/",
+    "open": "OPEN 15:30",
+    "start": "START 16:25",
+    "ticket_price": "前売り 3,500円",
+    "ticket_note": "1ドリンク別",
+    "message": "ついに15周年30回目を迎えるDREAM ON!\nここまで続くとは夢にも思わず、みなさんのおかげです！\n15周年30回記念回は豪華な記念回を予定しています！！！\n\nそして11月22日に開催された大学対抗K-POPカバーダンスコンテスト\n「DREAM ONE! Vol4」の優勝チーム・インカレサークルACEのステージもあります！",
+    "youtube_embed": "https://www.youtube.com/embed/iiNAzH2OK_I?rel=0&controls=0&showinfo=0"
+  },
+  "about": {
+    "lead": "BLACKPINK、ATEEZ、Stray kids、SEVENTEEN、LE SSERAFIM、NewJeans、RIIZE、ILLIT、BABYMONSTER、KISS OF LIFE などなど、いまだエンターテイメント界で一番熱いK-POPに限定したカバーダンスグループによるフェスティバルです！",
+    "body": "毎回の応募総数は全国から150～200組にもなり、レベルの高いステージで最高の盛り上がりを見せます！\nO-EASTはキャパ1300名の巨大ライブハウスで、過去に本物のK-POPアーティストも多数出演しています！照明、音響、ステージスタッフ共にプロの技術を駆使した最高のステージをご用意します！\n出場者には、プロの技術でショーアップされた広いステージで気持ちよく踊って頂き、そのダンスパフォーマンスは映像収録もされます！",
+    "features": [
+      { "icon": "🎤", "title": "全国から150〜200組が参加", "desc": "レベル高い出場者が全国から集結" },
+      { "icon": "🎵", "title": "キャパ1300名のO-EAST", "desc": "本物のK-POPアーティストも立ったステージ" },
+      { "icon": "📹", "title": "プロの映像収録", "desc": "あなたのパフォーマンスを高品質で記録" },
+      { "icon": "🎧", "title": "DJ TIME & イベント多数", "desc": "ファン同士が繋がれる空間も充実" }
+    ]
+  },
+  "teams": [
+    "ACE POSSE ~RED~", "ATwentieZ", "美女と狼1・2・3", "CLARITEEN", "DAISY",
+    "電撃少年團", "ENCIRCLE", "FOCUS部", "太もも管理委員会", "gnarly core",
+    "牛suz提供Simmerす", "Half2Hearts", "Harmony2Harmony", "it'sNa", "KISS OF VIBE",
+    "みんなの青春を取り戻しますKARA", "LØV3 MΞ 1$T", "Luna Femme🌙", "M☆Reverse", "MeowLIT🐱",
+    "MMSN", "NALGE", "Narvy", "NCTマントル", "1mprove",
+    "바보라떼", "PESCENE🥺", "ぽてときゃらめる", "PR❣NZE", "PRII7E",
+    "ぷろみんちゅ", "QieeN", "RE:117", "SOK", "STAYRA*",
+    "TKG", "To.rice", "TRAINSURE", "triproS", "ZNAKLE"
+  ],
+  "timetable": [
+    { "time": "15:30", "act": "OPEN / 開場" },
+    { "time": "16:25", "act": "START / 開演" },
+    { "time": "16:30", "act": "ACE POSSE ~RED~" },
+    { "time": "16:45", "act": "ATwentieZ" },
+    { "time": "17:00", "act": "CLARITEEN" },
+    { "time": "17:15", "act": "DAISY" },
+    { "time": "17:30", "act": "DJ TIME" },
+    { "time": "17:45", "act": "ENCIRCLE" },
+    { "time": "18:00", "act": "FOCUS部" },
+    { "time": "18:15", "act": "gnarly core" },
+    { "time": "18:30", "act": "Half2Hearts" },
+    { "time": "18:45", "act": "DJ TIME" },
+    { "time": "19:00", "act": "KISS OF VIBE" },
+    { "time": "19:15", "act": "Luna Femme🌙" },
+    { "time": "19:30", "act": "NCTマントル" },
+    { "time": "19:45", "act": "PRII7E" },
+    { "time": "20:00", "act": "DJ TIME / FINALE" }
+  ],
+  "qa": [
+    { "q": "出演エントリーはどうすればいいですか？", "a": "エントリーページよりお申し込みください。応募期間中のみ受け付けています。" },
+    { "q": "観覧チケットはどこで購入できますか？", "a": "前売りチケットはチケット販売サイトにてお求めいただけます。当日券も若干数販売予定です。" },
+    { "q": "出演チームの選考方法は？", "a": "動画審査を行います。応募いただいた動画をもとに選考し、出演チームを決定いたします。" },
+    { "q": "参加資格はありますか？", "a": "K-POPアーティストのカバーダンスであれば、年齢・国籍・経験は問いません。" },
+    { "q": "衣装の規定はありますか？", "a": "カバーするアーティストの衣装に準じた衣装が望ましいですが、必須ではありません。" },
+    { "q": "映像収録・公開について教えてください。", "a": "当日のパフォーマンスは収録され、後日YouTube等で公開される場合があります。" }
+  ],
+  "nav": [
+    { "label": "ABOUT", "href": "#about" },
+    { "label": "TIMETABLE", "href": "#timetable" },
+    { "label": "ENTRY", "href": "#entry" },
+    { "label": "Q&A", "href": "#qa" }
+  ],
+  "hero_images": [
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero1.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero2.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero3.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero4.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero5.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero6.jpg",
+    "https://dream-on.jp/wp-content/themes/dreamon/assets/images/hero7.jpg"
+  ]
+}
