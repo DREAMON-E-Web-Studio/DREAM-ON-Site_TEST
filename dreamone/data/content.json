@@ -1,0 +1,64 @@
+{
+  "site": {
+    "title": "DREAM ONE!",
+    "subtitle": "大学対抗 K-POP COVER DANCE CONTEST",
+    "description": "大学生によるK-POPカバーダンスの頂点を決める大会",
+    "email": "k-dancefes@shibuya-o.com",
+    "organizer": "株式会社シブヤテレビジョン",
+    "organizer_url": "",
+    "privacy_url": "https://www.sib.tv/privacy/",
+    "social": {
+      "youtube": "",
+      "twitter": "https://x.com/DreamOne_Kpop",
+      "instagram": "https://www.instagram.com/dreamone_kpop/",
+      "facebook": ""
+    }
+  },
+  "event": {
+    "vol": "5",
+    "anniversary": "大学対抗コンテスト",
+    "catchcopy": "大学生の頂点を決める戦いが始まる。",
+    "date": "2026.07.11（Sat）",
+    "venue": "渋谷さくらホール",
+    "venue_url": "https://www.bunkamura.co.jp/sakura/",
+    "open": "OPEN 13:00",
+    "start": "START 13:30",
+    "ticket_price": "前売り 2,500円",
+    "ticket_note": "",
+    "message": "大学生だけが出場できる、K-POPカバーダンスコンテスト「DREAM ONE!」\n\nDREAM ON!から生まれたこの大会は、全国の大学・インカレサークルが頂点をかけて競い合う真剣勝負の場です。\n\nVol.4では「インカレサークルACE」が優勝し、DREAM ON! Vol.30のオープニングアクトとして渋谷O-EASTのステージに立ちました。\n\nあなたのチームも、ここから歴史を作りませんか？",
+    "youtube_embed": ""
+  },
+  "about": {
+    "lead": "全国の大学生・インカレサークルによるK-POPカバーダンスの頂点を決める大会です。優勝チームにはDREAM ON!への出演権が与えられます！",
+    "body": "DREAM ON!（日本最大級K-POPカバーダンスフェス）から生まれた大学対抗コンテスト。\n\n大学に所属する学生、またはインカレサークルのメンバーであれば誰でもエントリー可能。\n審査はステージパフォーマンスで行われ、技術・表現力・完成度を総合的に評価します。\n\n優勝チームにはDREAM ON!への出演権が贈られ、プロの照明・音響が揃った本格ステージでパフォーマンスするチャンスが与えられます。",
+    "features": [
+      { "icon": "🏫", "title": "大学生限定", "desc": "大学・インカレサークルのメンバーなら誰でも参加可能" },
+      { "icon": "🏆", "title": "優勝チームはDREAM ON!へ", "desc": "日本最大級フェスのステージに立てるチャンス" },
+      { "icon": "⚡", "title": "真剣勝負のステージ", "desc": "技術・表現力・完成度を審査する本格コンテスト" },
+      { "icon": "🤝", "title": "全国から集結", "desc": "全国の大学サークルとの交流・切磋琢磨の場" }
+    ]
+  },
+  "teams": [
+    "出演チームは近日公開予定"
+  ],
+  "timetable": [
+    { "time": "13:00", "act": "OPEN / 開場" },
+    { "time": "13:30", "act": "START / 開演" },
+    { "time": "17:00", "act": "表彰式 / FINALE" }
+  ],
+  "qa": [
+    { "q": "出場資格はありますか？", "a": "大学に在籍する学生、またはインカレサークルのメンバーであれば参加可能です。" },
+    { "q": "エントリー方法を教えてください。", "a": "エントリーフォームよりお申し込みください。応募期間中のみ受け付けています。" },
+    { "q": "審査方法を教えてください。", "a": "当日のステージパフォーマンスを審査します。技術・表現力・完成度を総合的に評価します。" },
+    { "q": "優勝チームの特典は？", "a": "優勝チームにはDREAM ON!への出演権が贈られます。プロのステージで本格パフォーマンスができます。" },
+    { "q": "衣装の規定はありますか？", "a": "カバーするアーティストの衣装に準じた衣装が望ましいですが、必須ではありません。" },
+    { "q": "何人から参加できますか？", "a": "人数制限は特にありません。ソロから大人数チームまで参加可能です。" }
+  ],
+  "nav": [
+    { "label": "ABOUT", "href": "#about" },
+    { "label": "TIMETABLE", "href": "#timetable" },
+    { "label": "ENTRY", "href": "#entry" },
+    { "label": "Q&A", "href": "#qa" }
+  ],
+  "hero_images": []
+}
