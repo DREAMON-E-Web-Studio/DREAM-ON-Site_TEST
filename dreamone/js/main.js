@@ -102,23 +102,23 @@
   });
 
   const socialIcons = {
-    youtube:   { icon: '▶', label: 'YouTube' },
-    twitter:   { icon: '𝕏', label: 'X (Twitter)' },
-    instagram: { icon: '📷', label: 'Instagram' },
-    facebook:  { icon: 'f', label: 'Facebook' },
+    youtube:   { icon: '<i class="fa-brands fa-youtube"></i>', label: 'YouTube' },
+    twitter:   { icon: '<i class="fa-brands fa-x-twitter"></i>', label: 'X (Twitter)' },
+    instagram: { icon: '<i class="fa-brands fa-instagram"></i>', label: 'Instagram' },
+    facebook:  { icon: '<i class="fa-brands fa-facebook-f"></i>', label: 'Facebook' },
   };
 
   const footerSocial = document.getElementById('footer-social');
   Object.entries(site.social).forEach(([key, url]) => {
     if (!url) return;
-    const s = socialIcons[key] || { icon: '🔗', label: key };
+    const s = socialIcons[key] || { icon: '<i class="fa-solid fa-link"></i>', label: key };
     const a = document.createElement('a');
     a.className = 'social-link';
     a.href = url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     a.setAttribute('aria-label', s.label);
-    a.textContent = s.icon;
+    a.innerHTML = s.icon;
     footerSocial.appendChild(a);
   });
 
