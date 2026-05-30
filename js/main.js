@@ -1,4 +1,11 @@
+/* =============================================
+   DREAM ON! – main.js
+   JSONからコンテンツを動的に描画
+   ============================================= */
+
 (async () => {
+
+  /* ---------- データ読み込み ---------- */
   let data;
   try {
     const res = await fetch('data/content.json');
@@ -10,8 +17,12 @@
 
   const { site, event, about, teams, timetable, qa } = data;
 
+  /* ---------- ページタイトル ---------- */
   document.title = `${site.title} Vol.${event.vol} – ${site.subtitle}`;
 
+  /* ============================================================
+     NAV
+  ============================================================ */
   const navList = document.getElementById('nav-list');
   data.nav.forEach(item => {
     const li = document.createElement('li');
@@ -19,13 +30,17 @@
     navList.appendChild(li);
   });
 
+  /* ---- ハンバーガーメニュー ---- */
   const hamburger = document.getElementById('hamburger');
   const globalNav = document.getElementById('global-nav');
+
   hamburger.addEventListener('click', () => {
     const isOpen = globalNav.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
   });
+
+  // ナビリンクをタップしたら閉じる
   navList.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       globalNav.classList.remove('open');
@@ -33,15 +48,21 @@
     });
   });
 
+  /* ============================================================
+     HERO SLIDER
+  ============================================================ */
   const sliderEl = document.getElementById('hero-slider');
-  const dotsEl = document.getElementById('hero-dots');
-  const images = data.hero_images;
+  const dotsEl   = document.getElementById('hero-dots');
+  const images   = data.hero_images;
+
   let currentSlide = 0;
   let slideInterval;
 
+  // スライド生成
   const slides = images.map((src, i) => {
     const div = document.createElement('div');
     div.className = `hero-slide fallback-${i % 5}`;
+    // 画像を試す
     const img = new Image();
     img.onload = () => { div.style.backgroundImage = `url('${src}')`; };
     img.src = src;
@@ -49,6 +70,7 @@
     return div;
   });
 
+  // ドット生成
   images.forEach((_, i) => {
     const btn = document.createElement('button');
     btn.className = 'hero-dot';
@@ -74,6 +96,7 @@
   goTo(0);
   startAutoplay();
 
+  // タッチスワイプ
   let touchStartX = 0;
   sliderEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   sliderEl.addEventListener('touchend', e => {
@@ -85,12 +108,18 @@
     }
   });
 
-  document.getElementById('hero-vol-badge').textContent = `Vol.${event.vol} — ${event.anniversary}`;
+  /* ---- ヒーロー イベント情報 ---- */
+  document.getElementById('hero-vol-badge').textContent =
+    `Vol.${event.vol} — ${event.anniversary}`;
+
   document.getElementById('hero-info').innerHTML = `
     <div class="event-date">${event.date}</div>
     <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
   `;
 
+  /* ============================================================
+     ABOUT
+  ============================================================ */
   document.getElementById('about-lead').textContent = about.lead;
   document.getElementById('about-video-iframe').src = event.youtube_embed;
   document.getElementById('about-body').textContent = about.body;
@@ -107,6 +136,9 @@
     featuresGrid.appendChild(card);
   });
 
+  /* ============================================================
+     TIMETABLE
+  ============================================================ */
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
     <div class="tt-venue">${event.venue} / ${event.open} – ${event.start}</div>
@@ -124,6 +156,9 @@
     ttList.appendChild(div);
   });
 
+  /* ============================================================
+     TEAMS
+  ============================================================ */
   const teamsGrid = document.getElementById('teams-grid');
   teams.forEach(name => {
     const card = document.createElement('div');
@@ -132,6 +167,9 @@
     teamsGrid.appendChild(card);
   });
 
+  /* ============================================================
+     Q&A アコーディオン
+  ============================================================ */
   const qaList = document.getElementById('qa-list');
   qa.forEach((item, i) => {
     const div = document.createElement('div');
@@ -154,27 +192,33 @@
     qaList.appendChild(div);
   });
 
+  /* ============================================================
+     FOOTER SOCIAL
+  ============================================================ */
   const socialIcons = {
-    youtube:   { icon: '▶', label: 'YouTube' },
-    twitter:   { icon: '𝕏', label: 'X (Twitter)' },
-    instagram: { icon: '📷', label: 'Instagram' },
-    facebook:  { icon: 'f', label: 'Facebook' },
+    youtube:   { icon: '<i class="fa-brands fa-youtube"></i>', label: 'YouTube' },
+    twitter:   { icon: '<i class="fa-brands fa-x-twitter"></i>', label: 'X (Twitter)' },
+    instagram: { icon: '<i class="fa-brands fa-instagram"></i>', label: 'Instagram' },
+    facebook:  { icon: '<i class="fa-brands fa-facebook-f"></i>', label: 'Facebook' },
   };
 
   const footerSocial = document.getElementById('footer-social');
   Object.entries(site.social).forEach(([key, url]) => {
     if (!url) return;
-    const s = socialIcons[key] || { icon: '🔗', label: key };
+    const s = socialIcons[key] || { icon: '<i class="fa-solid fa-link"></i>', label: key };
     const a = document.createElement('a');
     a.className = 'social-link';
     a.href = url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     a.setAttribute('aria-label', s.label);
-    a.textContent = s.icon;
+    a.innerHTML = s.icon;
     footerSocial.appendChild(a);
   });
 
+  /* ============================================================
+     SCROLL REVEAL (IntersectionObserver)
+  ============================================================ */
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -187,6 +231,7 @@
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
+  // 少し遅延して要素を登録（DOM挿入後）
   setTimeout(() => {
     document.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = `${(i % 8) * 0.05}s`;
@@ -194,9 +239,14 @@
     });
   }, 100);
 
+  /* ============================================================
+     HEADER スクロール時の影
+  ============================================================ */
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
-    header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.12)' : 'none';
+    header.style.boxShadow = window.scrollY > 10
+      ? '0 2px 20px rgba(0,0,0,0.12)'
+      : 'none';
   }, { passive: true });
 
 })();
