@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DREAM ON! – K-POP COVER DANCE FES</title>
+  <meta name="description" content="K-POP COVER DANCE FES「DREAM ON!」は東京で開催されるK-POPカバーダンスの祭典です。" />
+
+  <!-- OGP -->
+  <meta property="og:title" content="DREAM ON! – K-POP COVER DANCE FES" />
+  <meta property="og:description" content="東京で開催されるK-POPカバーダンスの祭典" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#top" class="logo" id="logo-link">
+        <img src="https://dream-on.jp/wp-content/themes/dreamon/assets/images/logo_dream-on.svg"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+             alt="DREAM ON!" class="logo-img" />
+        <span class="logo-text" style="display:none">DREAM ON!</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="global-nav" id="global-nav">
+        <ul id="nav-list"></ul>
+        <a href="dreamone/index.html" class="site-switch">→ DREAM ONE!</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="top">
+    <div class="hero-slider" id="hero-slider">
+      <!-- JSで挿入 -->
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-vol-badge" id="hero-vol-badge"></div>
+      <h1 class="hero-title">DREAM ON!</h1>
+      <p class="hero-sub">K-POP COVER DANCE FES</p>
+      <div class="hero-info" id="hero-info"></div>
+      <div class="hero-cta">
+        <a href="#entry" class="btn btn-primary">エントリーはこちら</a>
+        <a href="#about" class="btn btn-outline">詳しく見る</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <h2 class="section-title">ABOUT</h2>
+      <div class="about-lead" id="about-lead"></div>
+      <div class="about-video">
+        <iframe id="about-video-iframe" src="" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen title="DREAM ON! ダイジェスト映像"></iframe>
+      </div>
+      <p class="about-body" id="about-body"></p>
+      <div class="features-grid" id="features-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========== TIMETABLE ========== -->
+  <section class="section section-alt" id="timetable">
+    <div class="section-inner">
+      <h2 class="section-title">TIMETABLE</h2>
+      <div class="timetable-header" id="timetable-header"></div>
+      <div class="timetable-list" id="timetable-list"></div>
+    </div>
+  </section>
+
+  <!-- ========== TEAMS ========== -->
+  <section class="section" id="teams">
+    <div class="section-inner">
+      <h2 class="section-title">出演チーム</h2>
+      <div class="teams-grid" id="teams-grid"></div>
+      <p class="teams-note">(a to z)</p>
+    </div>
+  </section>
+
+  <!-- ========== ENTRY ========== -->
+  <section class="section section-alt entry-section" id="entry">
+    <div class="section-inner">
+      <h2 class="section-title">ENTRY</h2>
+      <div class="entry-content">
+        <p class="entry-lead">あなたもDREAM ON!のステージに立ちませんか？<br>全国から仲間と一緒にエントリー受付中！</p>
+        <div class="entry-steps">
+          <div class="entry-step">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              <strong>動画を撮影</strong>
+              <span>カバーするK-POPアーティストの楽曲でダンス動画を撮影</span>
+            </div>
+          </div>
+          <div class="entry-step">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              <strong>フォームから応募</strong>
+              <span>下記フォームに必要事項を入力して送信</span>
+            </div>
+          </div>
+          <div class="entry-step">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              <strong>審査・結果通知</strong>
+              <span>動画審査を経て出演チームを決定、メールにてご連絡</span>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:k-dancefes@shibuya-o.com" class="btn btn-primary btn-large">
+          エントリーする
+        </a>
+        <p class="entry-note">※現在のエントリー状況はSNSをご確認ください</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Q&A ========== -->
+  <section class="section" id="qa">
+    <div class="section-inner">
+      <h2 class="section-title">Q&A</h2>
+      <div class="qa-list" id="qa-list"></div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="https://dream-on.jp/wp-content/themes/dreamon/assets/images/logo_dream-on.svg"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+             alt="DREAM ON!" />
+        <span style="display:none">DREAM ON!</span>
+      </div>
+      <div class="footer-social" id="footer-social"></div>
+      <div class="footer-links">
+        <a href="#top">DREAM ON! 運営事務局</a>
+        <a href="https://www.sib.tv/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">© DREAM ON! All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
