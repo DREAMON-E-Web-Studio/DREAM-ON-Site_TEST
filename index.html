@@ -1,7 +1,7 @@
 <!-- ============================================
      FILE TYPE : HTML
      SITE      : DREAM ON! (ドリオン)
-     VERSION   : 06
+     VERSION   : 08
 ============================================ -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,26 +20,21 @@
 </head>
 <body>
 
-  <!-- 切り替えバナー（最上部固定） -->
-  <div class="site-switch-bar">
-    <span class="site-switch-bar-label">SWITCH SITE</span>
-    <a href="dreamone/index.html" class="site-switch-btn site-switch-btn--one">DREAM ONE! →</a>
-  </div>
-
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="#top" class="logo" id="logo-link">
+      <a href="#top" class="logo">
         <img src="images/logo.png"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
              alt="DREAM ON!" class="logo-img" />
         <span class="logo-text" style="display:none">DREAM ON!</span>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="dreamone/index.html" class="site-switch-btn site-switch-btn--one">DREAM ONE! →</a>
       <nav class="global-nav" id="global-nav">
         <ul id="nav-list"></ul>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
