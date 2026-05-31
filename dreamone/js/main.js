@@ -1,12 +1,12 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 06
+   VERSION   : 15
 ============================================ */
 (async () => {
   let data;
   try {
-    const res = await fetch('data/content.json');
+    const res = await fetch('data/content.json?t=' + Date.now(), { cache: 'no-store' });
     data = await res.json();
   } catch (e) {
     console.error('content.json の読み込みに失敗しました:', e);
@@ -219,3 +219,9 @@
   }, { passive: true });
 
 })();
+
+/* ============================================
+   FILE TYPE : JS
+   SITE      : DREAM ONE! (ドリワン)
+   VERSION   : 15
+============================================ */
