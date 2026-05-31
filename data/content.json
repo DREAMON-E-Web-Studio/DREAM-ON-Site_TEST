@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "13"
+    "version": "14"
   },
   "site": {
     "title": "DREAM ON!",
@@ -123,10 +123,10 @@
   "hero_images": [
     "images/hero1.jpg",
     "images/hero2.jpeg",
-    "images/hero3.jpeg",
+    "images/hero3.jpg",
     "images/hero4.jpeg",
     "images/hero5.jpeg",
-    "images/hero6.jpg",
+    "images/hero6.jpeg",
     "images/hero7.jpeg"
   ]
 }
