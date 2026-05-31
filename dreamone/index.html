@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DREAM ONE! – 大学対抗 K-POP COVER DANCE CONTEST</title>
+  <title>DREAM ONE! Vol.5 – 大学対抗 K-POP COVER DANCE CONTEST</title>
   <meta name="description" content="大学生によるK-POPカバーダンスの頂点を決める大会「DREAM ONE!」" />
-  <meta property="og:title" content="DREAM ONE! – 大学対抗 K-POP COVER DANCE CONTEST" />
-  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="#top" class="logo">
-        <span class="logo-text">DREAM ONE!</span>
+        <img src="images/logo.png" alt="DREAM ONE!" class="logo-img" />
       </a>
       <button class="hamburger" id="hamburger" aria-label="メニューを開く">
         <span></span><span></span><span></span>
@@ -32,14 +30,18 @@
 
   <section class="hero" id="top">
     <div class="hero-bg-pattern"></div>
+    <div class="hero-particles" id="hero-particles"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
+      <p class="hero-catchcopy" id="hero-catchcopy"></p>
+      <div class="hero-logo-wrap">
+        <img src="images/logo.png" alt="DREAM ONE!" class="hero-logo-img" />
+      </div>
       <div class="hero-vol-badge" id="hero-vol-badge"></div>
-      <h1 class="hero-title">DREAM ONE!</h1>
-      <p class="hero-sub">大学対抗 K-POP COVER DANCE CONTEST</p>
       <div class="hero-info" id="hero-info"></div>
+      <div class="hero-entry-badge">✨ エントリーで出演確約 ✨</div>
       <div class="hero-cta">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScut_B53liM6_Qmbw9drS_c9zeNsbkM3y58yw0ty579HDa0Cw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMTI0MDI0NTc0Mjg3NDE0AAGnrJL8Fhik-QXz1FBA2bq1TUA7eYS9YUnxKRsbapJgSmihsG9p9zRZUQHuPTM_aem_Mg15UzAoM2Y_Xmv5EK20WQ" target="_blank" rel="noopener" class="btn btn-primary">エントリーはこちら</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScut_B53liM6_Qmbw9drS_c9zeNsbkM3y58yw0ty579HDa0Cw/viewform" target="_blank" rel="noopener" class="btn btn-primary">エントリーはこちら</a>
         <a href="#about" class="btn btn-outline">詳しく見る</a>
       </div>
     </div>
@@ -58,7 +60,14 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="timetable">
+  <section class="section section-alt" id="rules">
+    <div class="section-inner">
+      <h2 class="section-title">RULES</h2>
+      <div class="rules-grid" id="rules-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="timetable">
     <div class="section-inner">
       <h2 class="section-title">TIMETABLE</h2>
       <div class="timetable-header" id="timetable-header"></div>
@@ -66,51 +75,51 @@
     </div>
   </section>
 
-  <section class="section" id="teams">
+  <section class="section section-alt" id="teams">
     <div class="section-inner">
       <h2 class="section-title">出場チーム</h2>
       <div class="teams-grid" id="teams-grid"></div>
     </div>
   </section>
 
-  <section class="section section-alt entry-section" id="entry">
+  <section class="section entry-section" id="entry">
     <div class="section-inner">
       <h2 class="section-title">ENTRY</h2>
-      <div class="entry-content">
-        <p class="entry-lead">あなたのチームも、DREAM ONE!のステージで頂点を目指しませんか？<br>大学生・インカレサークル限定のK-POPカバーダンスコンテスト！</p>
-        <div class="entry-steps">
-          <div class="entry-step">
-            <div class="step-num">01</div>
-            <div class="step-text">
-              <strong>動画を撮影</strong>
-              <span>カバーするK-POPアーティストの楽曲でダンス動画を撮影</span>
-            </div>
-          </div>
-          <div class="entry-step">
-            <div class="step-num">02</div>
-            <div class="step-text">
-              <strong>フォームから応募</strong>
-              <span>エントリーフォームに必要事項を入力して送信</span>
-            </div>
-          </div>
-          <div class="entry-step">
-            <div class="step-num">03</div>
-            <div class="step-text">
-              <strong>審査・出場決定</strong>
-              <span>書類・動画審査を経て出場チームを決定、メールにてご連絡</span>
-            </div>
+      <div class="entry-badge-large">✨ エントリーで出演確約 ✨</div>
+      <p class="entry-lead">審査なし！フォームから即エントリーでステージへ。<br>あなたのチームでDREAM ONE!に挑戦しよう！</p>
+      <div class="entry-info-box" id="entry-info-box"></div>
+      <div class="entry-steps">
+        <div class="entry-step">
+          <div class="step-num">01</div>
+          <div class="step-text">
+            <strong>チームを集める</strong>
+            <span>同じ大学・インカレサークルのメンバーで参加</span>
           </div>
         </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScut_B53liM6_Qmbw9drS_c9zeNsbkM3y58yw0ty579HDa0Cw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMTI0MDI0NTc0Mjg3NDE0AAGnrJL8Fhik-QXz1FBA2bq1TUA7eYS9YUnxKRsbapJgSmihsG9p9zRZUQHuPTM_aem_Mg15UzAoM2Y_Xmv5EK20WQ"
-           target="_blank" rel="noopener" class="btn btn-primary btn-large">
-          エントリーフォームへ
-        </a>
-        <p class="entry-note">※エントリー期間・資格等の詳細はSNSをご確認ください</p>
+        <div class="entry-step">
+          <div class="step-num">02</div>
+          <div class="step-text">
+            <strong>フォームから応募</strong>
+            <span>エントリーフォームに必要事項を入力して送信</span>
+          </div>
+        </div>
+        <div class="entry-step">
+          <div class="step-num">03</div>
+          <div class="step-text">
+            <strong>出演確約！</strong>
+            <span>エントリー完了で即ステージ出演が確定</span>
+          </div>
+        </div>
       </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScut_B53liM6_Qmbw9drS_c9zeNsbkM3y58yw0ty579HDa0Cw/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+        エントリーフォームへ
+      </a>
+      <p class="entry-note">エントリー期間：<span id="entry-period"></span></p>
+      <p class="entry-note">お問い合わせ：SNS（X / Instagram）よりDMにてご連絡ください</p>
     </div>
   </section>
 
-  <section class="section" id="qa">
+  <section class="section section-alt" id="qa">
     <div class="section-inner">
       <h2 class="section-title">Q&A</h2>
       <div class="qa-list" id="qa-list"></div>
@@ -119,7 +128,9 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">DREAM ONE!</div>
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="DREAM ONE!" />
+      </div>
       <div class="footer-social" id="footer-social"></div>
       <div class="footer-links">
         <a href="#top">DREAM ONE! 運営事務局</a>
