@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 11
+   VERSION   : 12
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -13,7 +13,7 @@
   /* ---------- データ読み込み ---------- */
   let data;
   try {
-    const res = await fetch('data/content.json');
+    const res = await fetch('data/content.json?v=12', { cache: 'no-store' });
     data = await res.json();
   } catch (e) {
     console.error('content.json の読み込みに失敗しました:', e);
@@ -258,3 +258,9 @@
   }, { passive: true });
 
 })();
+
+/* ============================================
+   FILE TYPE : JS
+   SITE      : DREAM ON! (ドリオン)
+   VERSION   : 12
+============================================ */
