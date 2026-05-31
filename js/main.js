@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 06
+   VERSION   : 11
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -69,7 +69,10 @@
     div.className = `hero-slide fallback-${i % 5}`;
     // 画像を試す
     const img = new Image();
-    img.onload = () => { div.style.backgroundImage = `url('${src}')`; };
+    img.onload = () => {
+      div.style.backgroundImage = `url('${src}')`;
+      div.classList.remove(`fallback-${i % 5}`);
+    };
     img.src = src;
     sliderEl.appendChild(div);
     return div;
