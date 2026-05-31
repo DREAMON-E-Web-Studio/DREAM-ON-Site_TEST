@@ -1,3 +1,8 @@
+/* ============================================
+   FILE TYPE : JS
+   SITE      : DREAM ONE! (ドリワン)
+   VERSION   : 06
+============================================ */
 (async () => {
   let data;
   try {
@@ -47,6 +52,30 @@
       opacity: 0;
     `;
     particlesEl.appendChild(p);
+  }
+
+  // ヒーロー背景スライダー（hero_imagesがあれば表示）
+  const sliderEl = document.getElementById('hero-slider');
+  const images = data.hero_images || [];
+  if (sliderEl && images.length > 0) {
+    let current = 0;
+    const slides = images.map((src, i) => {
+      const div = document.createElement('div');
+      div.className = 'hero-slide';
+      const img = new Image();
+      img.onload = () => { div.style.backgroundImage = `url('${src}')`; };
+      img.src = src;
+      sliderEl.appendChild(div);
+      return div;
+    });
+    slides[0].classList.add('active');
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 5000);
+    }
   }
 
   // HERO
