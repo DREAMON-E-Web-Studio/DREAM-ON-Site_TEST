@@ -1,3 +1,8 @@
+<!-- ============================================
+     FILE TYPE : HTML
+     SITE      : DREAM ONE! (ドリワン)
+     VERSION   : 06
+============================================ -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,13 +41,16 @@
   </header>
 
   <section class="hero" id="top">
+    <div class="hero-slider" id="hero-slider"></div>
     <div class="hero-bg-pattern"></div>
     <div class="hero-particles" id="hero-particles"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-catchcopy" id="hero-catchcopy"></p>
       <div class="hero-logo-wrap">
-        <img src="images/logo.png" alt="DREAM ONE!" class="hero-logo-img" />
+        <img src="images/logo.png" alt="DREAM ONE!" class="hero-logo-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <h1 class="hero-title" style="display:none">DREAM ONE!</h1>
       </div>
       <div class="hero-vol-badge" id="hero-vol-badge"></div>
       <div class="hero-info" id="hero-info"></div>
