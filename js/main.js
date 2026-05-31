@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 12
+   VERSION   : 13
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -13,7 +13,7 @@
   /* ---------- データ読み込み ---------- */
   let data;
   try {
-    const res = await fetch('data/content.json?v=12', { cache: 'no-store' });
+    const res = await fetch('data/content.json?t=' + Date.now(), { cache: 'no-store' });
     data = await res.json();
   } catch (e) {
     console.error('content.json の読み込みに失敗しました:', e);
@@ -72,6 +72,9 @@
     img.onload = () => {
       div.style.backgroundImage = `url('${src}')`;
       div.classList.remove(`fallback-${i % 5}`);
+    };
+    img.onerror = () => {
+      console.error('画像が読み込めません:', src);
     };
     img.src = src;
     sliderEl.appendChild(div);
@@ -262,5 +265,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 12
+   VERSION   : 13
 ============================================ */
