@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 06
+   VERSION   : 07
 ============================================ */
 /* =============================================
    DREAM ON! – Main Stylesheet v05
@@ -58,7 +58,7 @@ ul { list-style: none; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
   display: flex; justify-content: center; align-items: center;
   padding: 8px 16px; gap: 12px;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 .site-switch-bar-label {
@@ -74,7 +74,6 @@ ul { list-style: none; }
   animation: switchPulse 2.5s ease-in-out infinite;
 }
 .site-switch-btn:active { transform: scale(0.96); }
-/* ドリオン→ドリワン：青系 */
 .site-switch-btn--one {
   background: linear-gradient(135deg, #0066ff, #00c8ff);
   box-shadow: 0 2px 16px rgba(0,150,255,0.5);
@@ -87,7 +86,6 @@ ul { list-style: none; }
   position: fixed; top: 44px; left: 0; right: 0; z-index: 1000;
   background: var(--header-bg);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
   transition: background 0.3s;
 }
 .header-inner {
@@ -145,7 +143,7 @@ body { padding-top: 0; }
 .hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; color: #fff; max-width: 600px; }
 .hero-logo-wrap { margin-bottom: 8px; animation: fadeInUp 0.8s 0.4s both; }
-.hero-logo-img { max-width: min(440px, 85vw); width: 100%; margin: 0 auto; filter: drop-shadow(0 4px 30px rgba(0,0,0,0.5)); }
+.hero-logo-img { max-width: min(440px, 85vw); width: 100%; margin: 0 auto; filter: drop-shadow(0 0 1px rgba(255,255,255,0.4)) drop-shadow(0 4px 24px rgba(0,0,0,0.45)); }
 .hero-vol-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; background: var(--accent-grd); padding: 5px 14px; border-radius: 100px; margin-bottom: 16px; animation: fadeInUp 0.8s 0.2s both; }
 .hero-title { font-family: var(--font-en); font-size: clamp(4rem, 20vw, 8rem); line-height: 1; letter-spacing: 0.04em; color: #fff; text-shadow: 0 2px 40px rgba(0,0,0,0.5); animation: fadeInUp 0.8s 0.4s both; }
 .hero-sub { font-family: var(--font-mono); font-size: clamp(0.65rem, 3vw, 0.85rem); letter-spacing: 0.22em; color: rgba(255,255,255,0.85); margin-top: 8px; animation: fadeInUp 0.8s 0.55s both; }
@@ -247,11 +245,23 @@ body { padding-top: 0; }
 
 /* ---------- Desktop (768px+) ---------- */
 @media (min-width: 768px) {
+  /* バナーを右上に小さく配置、ヘッダーと同じ行に収める */
+  .site-switch-bar {
+    top: 0; left: auto; right: 0; width: auto;
+    background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding: 0 20px; height: 64px;
+    z-index: 1101;
+  }
+  .site-switch-bar-label { display: none; }
+  .site-switch-btn { font-size: 0.95rem; padding: 8px 26px; }
+
+  .site-header { top: 0; }
+  .header-inner { height: 64px; padding-right: 200px; }
+
   .hamburger { display: none; }
   .global-nav { position: static; max-height: none; padding: 0; background: none; border: none; backdrop-filter: none; overflow: visible; top: auto; }
   .global-nav ul { flex-direction: row; gap: 0; }
-  .global-nav ul li a { padding: 8px 14px; font-size: 1rem; }
-  .site-switch-btn { font-size: 1.05rem; padding: 9px 32px; }
+  .global-nav ul li a { padding: 8px 12px; font-size: 0.95rem; }
   .features-grid { grid-template-columns: repeat(4, 1fr); }
   .teams-grid { grid-template-columns: repeat(3, 1fr); }
   .entry-steps { flex-direction: row; gap: 20px; }
