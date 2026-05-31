@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 08
+   VERSION   : 09
 ============================================ */
 /* =============================================
    ============================================= */
@@ -111,9 +111,8 @@ ul { list-style: none; }
   position: relative; width: 100%; min-height: 100svh;
   overflow: hidden; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 80px 24px 60px; box-sizing: border-box;
+  padding: 100px 24px 80px; box-sizing: border-box;
 }
-/* ---------- Hero ---------- */
 .hero-slider { position: absolute; inset: 0; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center center; opacity: 0; transition: opacity 1s ease; }
 .hero-slide.active { opacity: 1; }
@@ -133,7 +132,7 @@ ul { list-style: none; }
 .hero-info .event-date { font-family: var(--font-en); font-size: clamp(1.1rem, 4vw, 1.5rem); letter-spacing: 0.08em; }
 .hero-info .event-venue { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
 .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; animation: fadeInUp 0.8s 0.85s both; }
-.hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
+.hero-scroll-hint { position: relative; margin-top: 36px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent); animation: scrollPulse 1.8s ease-in-out infinite; }
 .hero-dots { position: absolute; bottom: 20px; right: 20px; z-index: 3; display: flex; gap: 6px; }
 .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0; transition: background 0.3s, transform 0.3s; }
@@ -241,6 +240,7 @@ ul { list-style: none; }
   .logo { margin-right: auto; }
   .global-nav { order: 2; margin-right: 16px; }
   .site-switch-btn { order: 3; font-size: 0.9rem; padding: 8px 22px; }
+  .hero { padding-top: 120px; padding-bottom: 80px; }
 
   .features-grid { grid-template-columns: repeat(4, 1fr); }
   .teams-grid { grid-template-columns: repeat(3, 1fr); }
@@ -255,3 +255,14 @@ ul { list-style: none; }
   .teams-grid { grid-template-columns: repeat(4, 1fr); }
   .global-nav ul li a { padding: 8px 16px; font-size: 1rem; }
 }
+/* ============================================
+   FILE TYPE : CSS
+   SITE      : DREAM ON! (ドリオン)
+   VERSION   : 09
+============================================ */
+
+/* ============================================
+   FILE TYPE : CSS
+   SITE      : DREAM ON! (ドリオン)
+   VERSION   : 09
+============================================ */
