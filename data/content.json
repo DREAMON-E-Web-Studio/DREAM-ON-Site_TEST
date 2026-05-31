@@ -1,11 +1,16 @@
 {
+  "_meta": {
+    "file_type": "JSON",
+    "site": "DREAM ON! (ドリオン)",
+    "version": "12"
+  },
   "site": {
     "title": "DREAM ON!",
     "subtitle": "K-POP COVER DANCE FES",
     "description": "東京で開催されるK-POPカバーダンスの祭典",
     "email": "k-dancefes@shibuya-o.com",
-    "organizer": "株式会社シブヤテレビジョン",
-    "organizer_url": "https://www.sib.tv/",
+    "organizer": "DREAM ON! 運営事務局",
+    "organizer_url": "#top",
     "privacy_url": "https://www.sib.tv/privacy/",
     "social": {
       "youtube": "https://www.youtube.com/@dreamon_kpop",
@@ -15,32 +20,32 @@
     }
   },
   "event": {
-    "vol": "30",
-    "anniversary": "15周年",
-    "catchcopy": "ついに15周年・30回目！",
-    "date": "2026.01.25（Sun）",
-    "venue": "Spotify O-EAST",
-    "venue_url": "https://www.shibuya-o.com/o-east/",
+    "vol": "31",
+    "anniversary": "新章スタート",
+    "catchcopy": "15年・30回の歴史を超え、新たな舞台へ。",
+    "date": "2026.08.23（Sun）",
+    "venue": "浅草花劇場",
+    "venue_url": "https://www.hanayashiki-kagekijo.com/",
     "open": "OPEN 15:30",
-    "start": "START 16:25",
-    "ticket_price": "前売り 3,500円",
+    "start": "START 16:00",
+    "ticket_price": "前売り 3,000円",
     "ticket_note": "1ドリンク別",
-    "message": "ついに15周年30回目を迎えるDREAM ON!\nここまで続くとは夢にも思わず、みなさんのおかげです！\n15周年30回記念回は豪華な記念回を予定しています！！！\n\nそして11月22日に開催された大学対抗K-POPカバーダンスコンテスト\n「DREAM ONE! Vol4」の優勝チーム・インカレサークルACEのステージもあります！",
+    "message": "15年・30回の歴史を積み重ねてきたDREAM ON!が、新たなステージへ踏み出します。\n\n新会場は浅草花やしき内の「浅草花劇場」。\nキャパシティは小さくなっても、その分だけアーティストと観客の距離はぐっと近くなります。\n\nステージの熱量そのままに、今まで以上に一体感のある空間で、K-POPカバーダンスの祭典をお届けします。",
     "youtube_embed": "https://www.youtube.com/embed/iiNAzH2OK_I?rel=0&controls=0&showinfo=0"
   },
   "about": {
-    "lead": "BLACKPINK、ATEEZ、Stray kids、SEVENTEEN、LE SSERAFIM、NewJeans、RIIZE、ILLIT、BABYMONSTER、KISS OF LIFE などなど、いまだエンターテイメント界で一番熱いK-POPに限定したカバーダンスグループによるフェスティバルです！",
-    "body": "毎回の応募総数は全国から150～200組にもなり、レベルの高いステージで最高の盛り上がりを見せます！\nO-EASTはキャパ1300名の巨大ライブハウスで、過去に本物のK-POPアーティストも多数出演しています！照明、音響、ステージスタッフ共にプロの技術を駆使した最高のステージをご用意します！\n出場者には、プロの技術でショーアップされた広いステージで気持ちよく踊って頂き、そのダンスパフォーマンスは映像収録もされます！",
+    "lead": "BLACKPINK、ATEEZ、Stray Kids、SEVENTEEN、LE SSERAFIM、NewJeans、RIIZE、ILLIT、BABYMONSTER、KISS OF LIFE などなど、いまだエンターテインメント界で最も熱いK-POPに限定したカバーダンスグループによるフェスティバルです！",
+    "body": "2011年にスタートしたDREAM ON!は、15年・30回を経て日本最大級のK-POPカバーダンスフェスへと成長しました。\n\nVol.31からは浅草花劇場を新たな拠点に、これまで培ってきた熱量はそのままに、出演者と観客がより近い距離で楽しめる濃密なステージをお届けします。\n\n出場者には、プロの照明・音響スタッフによる本格的なステージで思い切りパフォーマンスしていただき、その模様は映像収録もされます！",
     "features": [
       {
-        "icon": "🎤",
-        "title": "全国から150〜200組が参加",
-        "desc": "レベル高い出場者が全国から集結"
+        "icon": "🏆",
+        "title": "15年・30回の実績",
+        "desc": "日本最大級のK-POPカバーダンスフェスとして歴史を積み重ねてきた"
       },
       {
-        "icon": "🎵",
-        "title": "キャパ1300名のO-EAST",
-        "desc": "本物のK-POPアーティストも立ったステージ"
+        "icon": "🎯",
+        "title": "アーティストとの距離が近い",
+        "desc": "浅草花劇場だからこそ生まれる、圧倒的な臨場感と一体感"
       },
       {
         "icon": "📹",
@@ -55,46 +60,7 @@
     ]
   },
   "teams": [
-    "ACE POSSE ~RED~",
-    "ATwentieZ",
-    "美女と狼1・2・3",
-    "CLARITEEN",
-    "DAISY",
-    "電撃少年團",
-    "ENCIRCLE",
-    "FOCUS部",
-    "太もも管理委員会",
-    "gnarly core",
-    "牛suz提供Simmerす",
-    "Half2Hearts",
-    "Harmony2Harmony",
-    "it'sNa",
-    "KISS OF VIBE",
-    "みんなの青春を取り戻しますKARA",
-    "LØV3 MΞ 1$T",
-    "Luna Femme🌙",
-    "M☆Reverse",
-    "MeowLIT🐱",
-    "MMSN",
-    "NALGE",
-    "Narvy",
-    "NCTマントル",
-    "1mprove",
-    "바보라떼",
-    "PESCENE🥺",
-    "ぽてときゃらめる",
-    "PR❣NZE",
-    "PRII7E",
-    "ぷろみんちゅ",
-    "QieeN",
-    "RE:117",
-    "SOK",
-    "STAYRA*",
-    "TKG",
-    "To.rice",
-    "TRAINSURE",
-    "triproS",
-    "ZNAKLE"
+    "出演チームは近日公開予定"
   ],
   "timetable": [
     {
@@ -102,68 +68,12 @@
       "act": "OPEN / 開場"
     },
     {
-      "time": "16:25",
+      "time": "16:00",
       "act": "START / 開演"
     },
     {
-      "time": "16:30",
-      "act": "ACE POSSE ~RED~"
-    },
-    {
-      "time": "16:45",
-      "act": "ATwentieZ"
-    },
-    {
-      "time": "17:00",
-      "act": "CLARITEEN"
-    },
-    {
-      "time": "17:15",
-      "act": "DAISY"
-    },
-    {
-      "time": "17:30",
-      "act": "DJ TIME"
-    },
-    {
-      "time": "17:45",
-      "act": "ENCIRCLE"
-    },
-    {
-      "time": "18:00",
-      "act": "FOCUS部"
-    },
-    {
-      "time": "18:15",
-      "act": "gnarly core"
-    },
-    {
-      "time": "18:30",
-      "act": "Half2Hearts"
-    },
-    {
-      "time": "18:45",
-      "act": "DJ TIME"
-    },
-    {
-      "time": "19:00",
-      "act": "KISS OF VIBE"
-    },
-    {
-      "time": "19:15",
-      "act": "Luna Femme🌙"
-    },
-    {
-      "time": "19:30",
-      "act": "NCTマントル"
-    },
-    {
-      "time": "19:45",
-      "act": "PRII7E"
-    },
-    {
       "time": "20:00",
-      "act": "DJ TIME / FINALE"
+      "act": "FINALE"
     }
   ],
   "qa": [
