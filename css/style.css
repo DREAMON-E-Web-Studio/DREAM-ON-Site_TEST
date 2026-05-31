@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 09
+   VERSION   : 10
 ============================================ */
 /* =============================================
    ============================================= */
@@ -17,7 +17,7 @@
   --accent2:     #7c3aed;
   --accent-grd:  linear-gradient(135deg, #e91e8c 0%, #7c3aed 100%);
   --hero-overlay:rgba(0,0,0,0.45);
-  --header-bg:   rgba(255,255,255,0.92);
+  --header-bg:   rgba(255,255,255,0.72);
   --shadow:      0 4px 24px rgba(0,0,0,0.08);
   --shadow-md:   0 8px 40px rgba(0,0,0,0.13);
   --radius:      12px;
@@ -39,7 +39,7 @@
     --accent2:     #9d5fff;
     --accent-grd:  linear-gradient(135deg, #ff2d9b 0%, #9d5fff 100%);
     --hero-overlay:rgba(0,0,0,0.55);
-    --header-bg:   rgba(10,10,15,0.92);
+    --header-bg:   rgba(10,10,15,0.72);
     --shadow:      0 4px 24px rgba(0,0,0,0.4);
     --shadow-md:   0 8px 40px rgba(0,0,0,0.6);
   }
@@ -114,7 +114,7 @@ ul { list-style: none; }
   padding: 100px 24px 80px; box-sizing: border-box;
 }
 .hero-slider { position: absolute; inset: 0; }
-.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center center; opacity: 0; transition: opacity 1s ease; }
+.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat; opacity: 0; transition: opacity 1s ease; }
 .hero-slide.active { opacity: 1; }
 .hero-slide.fallback-0 { background: linear-gradient(135deg, #1a0030, #3d0068, #6b0099); }
 .hero-slide.fallback-1 { background: linear-gradient(135deg, #00204a, #004080, #0070cc); }
@@ -258,11 +258,5 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 09
-============================================ */
-
-/* ============================================
-   FILE TYPE : CSS
-   SITE      : DREAM ON! (ドリオン)
-   VERSION   : 09
+   VERSION   : 10
 ============================================ */
