@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 15
+   VERSION   : 16
 ============================================ */
 /* =============================================
    ============================================= */
@@ -115,6 +115,25 @@ ul { list-style: none; }
 .hero-info .event-date { font-family: var(--font-en); font-size: clamp(1.1rem, 4vw, 1.5rem); letter-spacing: 0.08em; }
 .hero-info .event-venue { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
 .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; animation: fadeInUp 0.8s 0.85s both; }
+
+/* ---------- Phase（エントリー状態） ---------- */
+.hero-phase { margin-top: 22px; animation: fadeInUp 0.8s 0.8s both; }
+.phase-headline { font-size: clamp(1.1rem, 4.5vw, 1.5rem); font-weight: 900; letter-spacing: 0.04em; margin-bottom: 8px; }
+.phase-headline.phase-open { color: #ff6ec7; text-shadow: 0 0 18px rgba(255,45,155,0.5); }
+.phase-headline.phase-before { color: #ffffff; }
+.phase-headline.phase-closed { color: #c0c0d0; }
+.phase-headline.phase-announced { color: #ffd84d; text-shadow: 0 0 18px rgba(255,200,40,0.5); }
+.phase-note { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+/* カウントダウン */
+.phase-countdown { display: flex; gap: 10px; justify-content: center; margin: 14px 0; }
+.cd-box { display: flex; flex-direction: column; align-items: center; min-width: 58px; padding: 10px 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; backdrop-filter: blur(6px); }
+.cd-num { font-family: var(--font-en); font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1; color: #fff; }
+.cd-unit { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.cd-open { font-weight: 900; font-size: 1.1rem; color: #ff6ec7; }
+
+/* 無効ボタン */
+.btn-disabled { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 100px; font-family: var(--font-jp); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.04em; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); cursor: default; white-space: nowrap; }
 .hero-scroll-hint { position: relative; margin-top: 36px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent); animation: scrollPulse 1.8s ease-in-out infinite; }
 .hero-dots { position: absolute; bottom: 20px; right: 20px; z-index: 3; display: flex; gap: 6px; }
@@ -241,5 +260,5 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 15
+   VERSION   : 16
 ============================================ */
