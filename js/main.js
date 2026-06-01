@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 15
+   VERSION   : 16
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -129,8 +129,65 @@
   `;
 
   /* ============================================================
-     ABOUT
+     PHASE（エントリー状態の切り替え）
   ============================================================ */
+  const phase = data.phase || 'open';
+  const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
+  const phaseEl = document.getElementById('hero-phase');
+  const ctaEl = document.getElementById('hero-cta');
+  const entryFormUrl = '#entry'; // エントリーセクションへ
+
+  // フェーズ表示（見出し＋補足＋必要ならカウントダウン）
+  let phaseHTML = `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+  if (phase === 'before' && data.entry_open_date) {
+    phaseHTML += `<div class="phase-countdown" id="phase-countdown"></div>`;
+  }
+  phaseHTML += `<div class="phase-note">${pt.note}</div>`;
+  phaseEl.innerHTML = phaseHTML;
+
+  // ボタンの出し分け
+  let ctaHTML = '';
+  if (phase === 'open') {
+    ctaHTML = `
+      <a href="${entryFormUrl}" class="btn btn-primary">エントリーはこちら</a>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  } else if (phase === 'announced') {
+    ctaHTML = `
+      <a href="#teams" class="btn btn-primary">出演チームを見る</a>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  } else {
+    // before / closed はエントリー不可
+    ctaHTML = `
+      <span class="btn btn-disabled">${phase === 'before' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  }
+  ctaEl.innerHTML = ctaHTML;
+
+  // カウントダウン処理
+  if (phase === 'before' && data.entry_open_date) {
+    const target = new Date(data.entry_open_date).getTime();
+    const cdEl = document.getElementById('phase-countdown');
+    const updateCountdown = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        cdEl.innerHTML = `<span class="cd-open">まもなくエントリー開始！</span>`;
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      cdEl.innerHTML = `
+        <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
+        <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
+        <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
+        <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
+      `;
+    };
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
   document.getElementById('about-lead').textContent = about.lead;
   document.getElementById('about-video-iframe').src = event.youtube_embed;
   document.getElementById('about-body').textContent = about.body;
@@ -265,5 +322,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 15
+   VERSION   : 16
 ============================================ */
