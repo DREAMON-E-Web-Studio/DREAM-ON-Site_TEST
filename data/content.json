@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "15"
+    "version": "16"
   },
   "site": {
     "title": "DREAM ON!",
@@ -128,5 +128,25 @@
     "images/hero5.jpeg",
     "images/hero6.jpeg",
     "images/hero7.jpeg"
-  ]
+  ],
+  "phase": "open",
+  "entry_open_date": "2026-06-15T12:00:00",
+  "phase_text": {
+    "before": {
+      "headline": "エントリー開始まで",
+      "note": "開始までしばらくお待ちください"
+    },
+    "open": {
+      "headline": "エントリー受付中！",
+      "note": "下記フォームよりお申し込みください"
+    },
+    "closed": {
+      "headline": "エントリー受付終了",
+      "note": "厳正な審査の上、出演者を決定します。発表をお楽しみに！"
+    },
+    "announced": {
+      "headline": "出演者発表！",
+      "note": "今年のDREAM ON!に出演するチームはこちら"
+    }
+  }
 }
