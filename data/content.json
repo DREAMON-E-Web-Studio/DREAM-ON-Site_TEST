@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "16"
+    "version": "17"
   },
   "site": {
     "title": "DREAM ON!",
@@ -129,7 +129,7 @@
     "images/hero6.jpeg",
     "images/hero7.jpeg"
   ],
-  "phase": "close",
+  "phase": "open",
   "entry_open_date": "2026-06-15T12:00:00",
   "phase_text": {
     "before": {
@@ -141,8 +141,8 @@
       "note": "下記フォームよりお申し込みください"
     },
     "closed": {
-      "headline": "エントリー受付終了",
-      "note": "厳正な審査の上、出演者を決定します。発表をお楽しみに！"
+      "headline": "エントリー受付は終了しました",
+      "note": "厳正な審査の上、出演者を決定します。\n出演者の発表まで今しばらくお待ちください。"
     },
     "announced": {
       "headline": "出演者発表！",
