@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 15
+   VERSION   : 20
 ============================================ */
 (async () => {
   let data;
@@ -85,8 +85,70 @@
     <div class="event-date">${event.date}</div>
     <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
   `;
-  const ep = document.getElementById('entry-period');
-  if (ep) ep.textContent = event.entry_period;
+
+  /* ============================================================
+     PHASE（フェーズ切り替え）
+  ============================================================ */
+  const phase = data.phase || '2';
+  const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
+  const phaseEl = document.getElementById('hero-phase');
+  const ctaEl = document.getElementById('hero-cta');
+  const entryFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScut_B53liM6_Qmbw9drS_c9zeNsbkM3y58yw0ty579HDa0Cw/viewform';
+
+  // フェーズ2のときだけエントリーで出演確約バッジを表示
+  let phaseHTML = '';
+  if (phase === '2') {
+    phaseHTML += `<div class="hero-entry-badge">✨ エントリーで出演確約 ✨</div>`;
+  }
+  phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+  if (phase === '1' && data.entry_open_date) {
+    phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  }
+  if (phase === '2' && data.entry_close_date) {
+    phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  }
+  phaseHTML += `<div class="phase-note">${pt.note}</div>`;
+  phaseEl.innerHTML = phaseHTML;
+
+  // ボタン出し分け
+  let ctaHTML = '';
+  if (phase === '2') {
+    ctaHTML = `
+      <a href="${entryFormUrl}" target="_blank" rel="noopener" class="btn btn-primary">エントリーはこちら</a>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  } else if (phase === '4') {
+    ctaHTML = `
+      <a href="#teams" class="btn btn-primary">出場サークルを見る</a>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  } else {
+    ctaHTML = `
+      <span class="btn btn-disabled">${phase === '1' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
+      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  }
+  ctaEl.innerHTML = ctaHTML;
+
+  // カウントダウン（フェーズ1：開始まで / フェーズ2：締切まで）
+  const cdTarget = phase === '1' ? data.entry_open_date : phase === '2' ? data.entry_close_date : null;
+  if (cdTarget) {
+    const target = new Date(cdTarget).getTime();
+    const cdEl = document.getElementById('phase-countdown');
+    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : 'エントリー受付終了！';
+    const updateCd = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) { cdEl.innerHTML = `<span class="cd-open">${endMsg}</span>`; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      cdEl.innerHTML = `
+        <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
+        <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
+        <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
+        <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
+      `;
+    };
+    updateCd(); setInterval(updateCd, 1000);
+  }
 
   // ABOUT
   document.getElementById('about-lead').textContent = about.lead;
@@ -117,22 +179,142 @@
     rulesGrid.appendChild(card);
   });
 
-  // ENTRY INFO BOX
-  const entryInfoBox = document.getElementById('entry-info-box');
-  const infoRows = [
-    { label: '開催日', value: event.date },
-    { label: '会場', value: event.venue },
-    { label: 'エントリー期間', value: event.entry_period },
-    { label: 'チケット（関係者）', value: event.ticket_relation },
-    { label: 'チケット（一般）', value: event.ticket_general },
-    { label: 'ステージ', value: `開口 ${event.stage_width} / 奥行 ${event.stage_depth}` },
-  ];
-  infoRows.forEach(row => {
-    const div = document.createElement('div');
-    div.className = 'entry-info-row';
-    div.innerHTML = `<span class="entry-info-label">${row.label}</span><span class="entry-info-value">${row.value}</span>`;
-    entryInfoBox.appendChild(div);
-  });
+  // ENTRY（フェーズ対応）
+  const entryContent = document.getElementById('entry-content');
+  const ept = (data.phase_text && data.phase_text[phase]) || {};
+  const entryHeadline = ept.entry_headline || '';
+  const entryNote = ept.entry_note || '';
+
+  if (phase === '2') {
+    // フェーズ2：受付中（締切カウントダウン付き）
+    let closeCdHtml = '';
+    if (data.entry_close_date) {
+      closeCdHtml = `
+        <p class="entry-event-cd-label">エントリー締切まで</p>
+        <div class="entry-countdown" id="entry-close-countdown"></div>`;
+    }
+    entryContent.innerHTML = `
+      <div class="entry-badge-large">✨ エントリーで出演確約 ✨</div>
+      <p class="entry-lead">${entryHeadline}</p>
+      ${closeCdHtml}
+      <div class="entry-steps">
+        <div class="entry-step">
+          <div class="step-num">01</div>
+          <div class="step-text"><strong>チームを集める</strong><span>同じ大学・インカレサークルのメンバーで参加</span></div>
+        </div>
+        <div class="entry-step">
+          <div class="step-num">02</div>
+          <div class="step-text"><strong>フォームから応募</strong><span>エントリーフォームに必要事項を入力して送信</span></div>
+        </div>
+        <div class="entry-step">
+          <div class="step-num">03</div>
+          <div class="step-text"><strong>出演確約！</strong><span>エントリー完了で即ステージ出演が確定</span></div>
+        </div>
+      </div>
+      <a href="${entryFormUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-large">エントリーフォームへ</a>
+      <p class="entry-note">お問い合わせ：SNS（X / Instagram）よりDMにてご連絡ください</p>
+    `;
+    if (data.entry_close_date) {
+      const target = new Date(data.entry_close_date).getTime();
+      const ecEl = document.getElementById('entry-close-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">エントリー受付終了！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
+
+  } else if (phase === '1') {
+    // フェーズ1：開始前
+    let cdHtml = '';
+    if (data.entry_open_date) {
+      cdHtml = `<div class="entry-countdown" id="entry-open-countdown"></div>`;
+    }
+    entryContent.innerHTML = `
+      <p class="entry-lead">${entryHeadline}</p>
+      ${cdHtml}
+      <p class="entry-note" style="white-space:pre-line">${entryNote}</p>
+    `;
+    if (data.entry_open_date) {
+      const target = new Date(data.entry_open_date).getTime();
+      const ecEl = document.getElementById('entry-open-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">まもなくエントリー開始！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
+
+  } else if (phase === '3') {
+    // フェーズ3：締切・審査中
+    entryContent.innerHTML = `
+      <div class="entry-phase-msg">
+        <p class="entry-lead">${entryHeadline}</p>
+        <p class="entry-note" style="white-space:pre-line">${entryNote}</p>
+      </div>
+    `;
+
+  } else if (phase === '4') {
+    // フェーズ4：出場サークル発表＋開催日カウントダウン
+    let announcedImg = '';
+    if (data.announced_image) {
+      announcedImg = `<img src="${data.announced_image}" alt="出場サークル発表" class="entry-announced-img" />`;
+    }
+    let eventCdHtml = '';
+    if (data.event_datetime) {
+      eventCdHtml = `
+        <p class="entry-event-cd-label">イベント開催まで</p>
+        <div class="entry-countdown" id="entry-event-countdown"></div>`;
+    }
+    entryContent.innerHTML = `
+      ${announcedImg}
+      ${eventCdHtml}
+      <p class="entry-note" style="white-space:pre-line;margin-top:24px">${entryNote}</p>
+      <a href="#teams" class="btn btn-primary btn-large" style="margin-top:24px">出場サークルを見る</a>
+    `;
+    if (data.event_datetime) {
+      const target = new Date(data.event_datetime).getTime();
+      const ecEl = document.getElementById('entry-event-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">本日開催！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
+  }
 
   // TIMETABLE
   document.getElementById('timetable-header').innerHTML = `
@@ -223,5 +405,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 15
+   VERSION   : 20
 ============================================ */
