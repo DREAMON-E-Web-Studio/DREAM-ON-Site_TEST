@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 18
+   VERSION   : 19
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -131,7 +131,7 @@
   /* ============================================================
      PHASE（エントリー状態の切り替え）
   ============================================================ */
-  const phase = data.phase || 'open';
+  const phase = data.phase || '2';
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
@@ -139,7 +139,7 @@
 
   // フェーズ表示（見出し＋補足＋必要ならカウントダウン）
   let phaseHTML = `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
-  if (phase === 'before' && data.entry_open_date) {
+  if (phase === '1' && data.entry_open_date) {
     phaseHTML += `<div class="phase-countdown" id="phase-countdown"></div>`;
   }
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
@@ -147,24 +147,24 @@
 
   // ボタンの出し分け
   let ctaHTML = '';
-  if (phase === 'open') {
+  if (phase === '2') {
     ctaHTML = `
       <a href="${entryFormUrl}" class="btn btn-primary">エントリーはこちら</a>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
-  } else if (phase === 'announced') {
+  } else if (phase === '4') {
     ctaHTML = `
       <a href="#teams" class="btn btn-primary">出演チームを見る</a>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   } else {
     // before / closed はエントリー不可
     ctaHTML = `
-      <span class="btn btn-disabled">${phase === 'before' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
+      <span class="btn btn-disabled">${phase === '1' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   }
   ctaEl.innerHTML = ctaHTML;
 
   // カウントダウン処理
-  if (phase === 'before' && data.entry_open_date) {
+  if (phase === '1' && data.entry_open_date) {
     const target = new Date(data.entry_open_date).getTime();
     const cdEl = document.getElementById('phase-countdown');
     const updateCountdown = () => {
@@ -243,7 +243,7 @@
   const entryHeadline = ept.entry_headline || '';
   const entryNote = ept.entry_note || '';
 
-  if (phase === 'open') {
+  if (phase === '2') {
     // フェーズ2：受付中
     entryContent.innerHTML = `
       <p class="entry-lead">${entryHeadline}</p>
@@ -265,7 +265,7 @@
       <p class="entry-note">※現在のエントリー状況はSNSをご確認ください</p>
     `;
 
-  } else if (phase === 'before') {
+  } else if (phase === '1') {
     // フェーズ1：開始前
     let cdHtml = '';
     if (data.entry_open_date) {
@@ -298,7 +298,7 @@
       update(); setInterval(update, 1000);
     }
 
-  } else if (phase === 'closed') {
+  } else if (phase === '3') {
     // フェーズ3：締切・審査中
     entryContent.innerHTML = `
       <div class="entry-phase-msg entry-phase-closed">
@@ -307,7 +307,7 @@
       </div>
     `;
 
-  } else if (phase === 'announced') {
+  } else if (phase === '4') {
     // フェーズ4：出演者発表＋開催日カウントダウン
     let announcedImg = '';
     if (data.announced_image) {
@@ -435,5 +435,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 18
+   VERSION   : 19
 ============================================ */
