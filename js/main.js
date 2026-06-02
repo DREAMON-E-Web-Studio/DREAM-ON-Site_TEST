@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 19
+   VERSION   : 20
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -142,6 +142,9 @@
   if (phase === '1' && data.entry_open_date) {
     phaseHTML += `<div class="phase-countdown" id="phase-countdown"></div>`;
   }
+  if (phase === '2' && data.entry_close_date) {
+    phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  }
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
 
@@ -156,23 +159,21 @@
       <a href="#teams" class="btn btn-primary">出演チームを見る</a>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   } else {
-    // before / closed はエントリー不可
     ctaHTML = `
       <span class="btn btn-disabled">${phase === '1' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   }
   ctaEl.innerHTML = ctaHTML;
 
-  // カウントダウン処理
-  if (phase === '1' && data.entry_open_date) {
-    const target = new Date(data.entry_open_date).getTime();
+  // カウントダウン処理（フェーズ1：開始まで / フェーズ2：締切まで）
+  const cdTarget = phase === '1' ? data.entry_open_date : phase === '2' ? data.entry_close_date : null;
+  if (cdTarget) {
+    const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
+    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : 'エントリー受付終了！';
     const updateCountdown = () => {
       const diff = target - Date.now();
-      if (diff <= 0) {
-        cdEl.innerHTML = `<span class="cd-open">まもなくエントリー開始！</span>`;
-        return;
-      }
+      if (diff <= 0) { cdEl.innerHTML = `<span class="cd-open">${endMsg}</span>`; return; }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
@@ -245,8 +246,15 @@
 
   if (phase === '2') {
     // フェーズ2：受付中
+    let closeCdHtml = '';
+    if (data.entry_close_date) {
+      closeCdHtml = `
+        <p class="entry-event-cd-label">エントリー締切まで</p>
+        <div class="entry-countdown" id="entry-close-countdown"></div>`;
+    }
     entryContent.innerHTML = `
       <p class="entry-lead">${entryHeadline}</p>
+      ${closeCdHtml}
       <div class="entry-steps">
         <div class="entry-step">
           <div class="step-num">01</div>
@@ -264,6 +272,26 @@
       <a href="mailto:k-dancefes@shibuya-o.com" class="btn btn-primary btn-large">エントリーする</a>
       <p class="entry-note">※現在のエントリー状況はSNSをご確認ください</p>
     `;
+    if (data.entry_close_date) {
+      const target = new Date(data.entry_close_date).getTime();
+      const ecEl = document.getElementById('entry-close-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">エントリー受付終了！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
 
   } else if (phase === '1') {
     // フェーズ1：開始前
@@ -435,5 +463,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 19
+   VERSION   : 20
 ============================================ */
