@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "17"
+    "version": "18"
   },
   "site": {
     "title": "DREAM ON!",
@@ -129,24 +129,33 @@
     "images/hero6.jpeg",
     "images/hero7.jpeg"
   ],
-  "phase": "before",
+  "phase": "open",
   "entry_open_date": "2026-06-15T12:00:00",
   "phase_text": {
     "before": {
       "headline": "エントリー開始まで",
-      "note": "開始までしばらくお待ちください"
+      "note": "開始までしばらくお待ちください。\n開始日時はSNSでお知らせします。",
+      "entry_headline": "エントリー受付開始まで、今しばらくお待ちください。",
+      "entry_note": "開始日時はSNS（X / Instagram）にてお知らせします。\nお問い合わせもSNSよりDMにてご連絡ください。"
     },
     "open": {
       "headline": "エントリー受付中！",
-      "note": "下記フォームよりお申し込みください"
+      "note": "下記フォームよりお申し込みください。",
+      "entry_headline": "あなたもDREAM ON!のステージに立ちませんか？",
+      "entry_note": "全国から仲間と一緒にエントリー受付中！"
     },
     "closed": {
       "headline": "エントリー受付は終了しました",
-      "note": "厳正な審査の上、出演者を決定します。\n出演者の発表まで今しばらくお待ちください。"
+      "note": "厳正な審査の上、出演者を決定します。\n出演者の発表まで今しばらくお待ちください。",
+      "entry_headline": "エントリー受付は終了しました。",
+      "entry_note": "たくさんのご応募ありがとうございました。\n厳正な審査の上、出演者を決定いたします。\n出演者の発表をお楽しみに！"
     },
     "announced": {
       "headline": "出演者発表！",
-      "note": "今年のDREAM ON!に出演するチームはこちら"
+      "note": "今年のDREAM ON!に出演するチームはこちら",
+      "entry_headline": "今回のエントリーは締め切りました。",
+      "entry_note": "次回の開催情報はSNSにてお知らせします。\nフォローして最新情報をチェック！"
     }
-  }
+  },
+  "event_datetime": "2026-08-23T16:00:00"
 }
