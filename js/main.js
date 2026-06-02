@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 17
+   VERSION   : 18
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -236,6 +236,119 @@
   });
 
   /* ============================================================
+     ENTRY（フェーズ対応）
+  ============================================================ */
+  const entryContent = document.getElementById('entry-content');
+  const ept = (data.phase_text && data.phase_text[phase]) || {};
+  const entryHeadline = ept.entry_headline || '';
+  const entryNote = ept.entry_note || '';
+
+  if (phase === 'open') {
+    // フェーズ2：受付中
+    entryContent.innerHTML = `
+      <p class="entry-lead">${entryHeadline}</p>
+      <div class="entry-steps">
+        <div class="entry-step">
+          <div class="step-num">01</div>
+          <div class="step-text"><strong>動画を撮影</strong><span>カバーするK-POPアーティストの楽曲でダンス動画を撮影</span></div>
+        </div>
+        <div class="entry-step">
+          <div class="step-num">02</div>
+          <div class="step-text"><strong>フォームから応募</strong><span>下記フォームに必要事項を入力して送信</span></div>
+        </div>
+        <div class="entry-step">
+          <div class="step-num">03</div>
+          <div class="step-text"><strong>審査・結果通知</strong><span>動画審査を経て出演チームを決定、メールにてご連絡</span></div>
+        </div>
+      </div>
+      <a href="mailto:k-dancefes@shibuya-o.com" class="btn btn-primary btn-large">エントリーする</a>
+      <p class="entry-note">※現在のエントリー状況はSNSをご確認ください</p>
+    `;
+
+  } else if (phase === 'before') {
+    // フェーズ1：開始前
+    let cdHtml = '';
+    if (data.entry_open_date) {
+      cdHtml = `<div class="entry-countdown" id="entry-countdown"></div>`;
+    }
+    entryContent.innerHTML = `
+      <p class="entry-lead">${entryHeadline}</p>
+      ${cdHtml}
+      <p class="entry-note" style="white-space:pre-line">${entryNote}</p>
+    `;
+    // カウントダウン
+    if (data.entry_open_date) {
+      const target = new Date(data.entry_open_date).getTime();
+      const ecEl = document.getElementById('entry-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">まもなくエントリー開始！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
+
+  } else if (phase === 'closed') {
+    // フェーズ3：締切・審査中
+    entryContent.innerHTML = `
+      <div class="entry-phase-msg entry-phase-closed">
+        <p class="entry-lead">${entryHeadline}</p>
+        <p class="entry-note" style="white-space:pre-line">${entryNote}</p>
+      </div>
+    `;
+
+  } else if (phase === 'announced') {
+    // フェーズ4：出演者発表＋開催日カウントダウン
+    let announcedImg = '';
+    if (data.announced_image) {
+      announcedImg = `<img src="${data.announced_image}" alt="出演者発表" class="entry-announced-img" />`;
+    }
+    let eventCdHtml = '';
+    if (data.event_datetime) {
+      eventCdHtml = `
+        <p class="entry-event-cd-label">イベント開催まで</p>
+        <div class="entry-countdown" id="entry-event-countdown"></div>`;
+    }
+    entryContent.innerHTML = `
+      ${announcedImg}
+      ${eventCdHtml}
+      <p class="entry-note" style="white-space:pre-line;margin-top:24px">${entryNote}</p>
+      <a href="#teams" class="btn btn-primary btn-large" style="margin-top:24px">出演チームを見る</a>
+    `;
+    // 開催日カウントダウン
+    if (data.event_datetime) {
+      const target = new Date(data.event_datetime).getTime();
+      const ecEl = document.getElementById('entry-event-countdown');
+      const update = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">本日開催！</p>`; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        ecEl.innerHTML = `
+          <div class="entry-cd-wrap">
+            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
+            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
+          </div>`;
+      };
+      update(); setInterval(update, 1000);
+    }
+  }
+
+  /* ============================================================
      Q&A アコーディオン
   ============================================================ */
   const qaList = document.getElementById('qa-list');
@@ -322,5 +435,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 17
+   VERSION   : 18
 ============================================ */
