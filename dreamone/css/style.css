@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 15
+   VERSION   : 20
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -107,6 +107,32 @@ ul { list-style: none; }
 .hero-info .event-date { font-family: var(--font-en); font-size: clamp(1.2rem, 5vw, 1.8rem); letter-spacing: 0.08em; }
 .hero-info .event-venue { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
 .hero-entry-badge { display: inline-block; margin-top: 16px; padding: 8px 20px; border: 1.5px solid var(--accent); border-radius: 100px; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.08em; animation: fadeInUp 0.8s 0.75s both; box-shadow: var(--accent-glow); }
+
+/* ---------- Phase（フェーズ） ---------- */
+.hero-phase { margin-top: 16px; animation: fadeInUp 0.8s 0.8s both; }
+.phase-headline { font-size: clamp(1.1rem, 4.5vw, 1.5rem); font-weight: 900; letter-spacing: 0.04em; margin-bottom: 8px; }
+.phase-headline.phase-2 { color: var(--accent); text-shadow: var(--accent-glow); }
+.phase-headline.phase-1 { color: #ffffff; }
+.phase-headline.phase-3 { color: #c0c0d0; }
+.phase-headline.phase-4 { color: #ffd84d; text-shadow: 0 0 18px rgba(255,200,40,0.5); }
+.phase-note { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.6; white-space: pre-line; }
+.phase-cd-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-bottom: 6px; margin-top: 10px; }
+.phase-countdown { display: flex; gap: 10px; justify-content: center; margin: 10px 0; }
+.cd-box { display: flex; flex-direction: column; align-items: center; min-width: 58px; padding: 10px 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; }
+.cd-num { font-family: var(--font-en); font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1; color: #fff; }
+.cd-unit { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.cd-open { font-weight: 900; font-size: 1.1rem; color: var(--accent); }
+.btn-disabled { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 100px; font-family: var(--font-jp); font-weight: 700; font-size: 0.85rem; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); cursor: default; white-space: nowrap; }
+
+/* ENTRYフェーズ対応 */
+.entry-phase-msg { text-align: center; padding: 16px 0; }
+.entry-announced-img { max-width: min(600px, 100%); margin: 0 auto 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.entry-event-cd-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
+.entry-cd-wrap { display: flex; gap: 12px; justify-content: center; margin-bottom: 8px; }
+.entry-cd-box { display: flex; flex-direction: column; align-items: center; min-width: 68px; padding: 14px 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.entry-cd-num { font-family: var(--font-en); font-size: clamp(1.8rem, 7vw, 2.8rem); line-height: 1; color: var(--text); }
+.entry-cd-unit { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--text-sub); margin-top: 4px; }
+.entry-cd-open { font-weight: 900; font-size: 1.2rem; color: var(--accent); margin: 12px 0; }
 .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; animation: fadeInUp 0.8s 0.9s both; }
 .hero-scroll-hint { position: relative; margin-top: 32px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(0,200,255,0.6), transparent); animation: scrollPulse 1.8s ease-in-out infinite; }
@@ -241,5 +267,5 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 15
+   VERSION   : 20
 ============================================ */
