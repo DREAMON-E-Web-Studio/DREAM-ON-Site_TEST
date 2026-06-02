@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ONE! (ドリワン)",
-    "version": "15"
+    "version": "20"
   },
   "site": {
     "title": "DREAM ONE!",
@@ -177,5 +177,35 @@
       "href": "#qa"
     }
   ],
-  "hero_images": []
+  "hero_images": [],
+  "phase": "2",
+  "entry_open_date": "2026-04-24T12:00:00",
+  "entry_close_date": "2026-05-31T23:59:00",
+  "event_datetime": "2026-07-11T16:30:00",
+  "phase_text": {
+    "1": {
+      "headline": "エントリー開始まで",
+      "note": "開始までしばらくお待ちください。\n開始日時はSNSでお知らせします。",
+      "entry_headline": "エントリー受付開始まで、今しばらくお待ちください。",
+      "entry_note": "開始日時はSNS（X / Instagram）にてお知らせします。\nお問い合わせもSNSよりDMにてご連絡ください。"
+    },
+    "2": {
+      "headline": "エントリー受付中！",
+      "note": "下記フォームよりお申し込みください。",
+      "entry_headline": "あなたのチームでDREAM ONE!に挑戦しませんか？",
+      "entry_note": "審査なし！フォームから即エントリーでステージへ。"
+    },
+    "3": {
+      "headline": "エントリー受付は終了しました",
+      "note": "たくさんのご応募ありがとうございました。\n出場サークルの発表まで今しばらくお待ちください。",
+      "entry_headline": "エントリー受付は終了しました。",
+      "entry_note": "たくさんのご応募ありがとうございました。\n出場サークルの発表をお楽しみに！"
+    },
+    "4": {
+      "headline": "出場サークル発表！",
+      "note": "今年のDREAM ONE!に出場するサークルはこちら",
+      "entry_headline": "今回のエントリーは締め切りました。",
+      "entry_note": "次回の開催情報はSNSにてお知らせします。\nフォローして最新情報をチェック！"
+    }
+  }
 }
