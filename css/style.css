@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 17
+   VERSION   : 18
 ============================================ */
 /* =============================================
    ============================================= */
@@ -195,6 +195,17 @@ ul { list-style: none; }
 .step-text span { font-size: 0.82rem; color: var(--text-sub); }
 .entry-note { margin-top: 16px; font-size: 0.78rem; color: var(--text-sub); }
 
+/* ENTRYフェーズ対応 */
+.entry-phase-msg { text-align: center; padding: 16px 0; }
+.entry-phase-closed .entry-lead { color: var(--text-sub); }
+.entry-announced-img { max-width: min(600px, 100%); margin: 0 auto 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.entry-event-cd-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
+.entry-cd-wrap { display: flex; gap: 12px; justify-content: center; margin-bottom: 8px; }
+.entry-cd-box { display: flex; flex-direction: column; align-items: center; min-width: 68px; padding: 14px 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.entry-cd-num { font-family: var(--font-en); font-size: clamp(1.8rem, 7vw, 2.8rem); line-height: 1; color: var(--text); }
+.entry-cd-unit { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--text-sub); margin-top: 4px; }
+.entry-cd-open { font-weight: 900; font-size: 1.2rem; color: var(--accent); margin: 12px 0; }
+
 /* ---------- Q&A ---------- */
 .qa-list { display: flex; flex-direction: column; gap: 12px; }
 .qa-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
@@ -260,5 +271,5 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 17
+   VERSION   : 18
 ============================================ */
