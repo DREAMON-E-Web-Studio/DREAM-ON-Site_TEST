@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 20
+   VERSION   : 21
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -170,10 +170,10 @@
   if (cdTarget) {
     const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
-    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : 'エントリー受付終了！';
+    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : '';
     const updateCountdown = () => {
       const diff = target - Date.now();
-      if (diff <= 0) { cdEl.innerHTML = `<span class="cd-open">${endMsg}</span>`; return; }
+      if (diff <= 0) { cdEl.style.display='none'; if(endMsg) cdEl.innerHTML=`<span class="cd-open">${endMsg}</span>`; return; }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
@@ -277,7 +277,7 @@
       const ecEl = document.getElementById('entry-close-countdown');
       const update = () => {
         const diff = target - Date.now();
-        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">エントリー受付終了！</p>`; return; }
+        if (diff <= 0) { ecEl.style.display='none'; return; }
         const d = Math.floor(diff / 86400000);
         const h = Math.floor((diff % 86400000) / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
@@ -463,5 +463,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 20
+   VERSION   : 21
 ============================================ */
