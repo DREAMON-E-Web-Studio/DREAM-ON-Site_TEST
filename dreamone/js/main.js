@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 20
+   VERSION   : 21
 ============================================ */
 (async () => {
   let data;
@@ -219,7 +219,7 @@
       const ecEl = document.getElementById('entry-close-countdown');
       const update = () => {
         const diff = target - Date.now();
-        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">エントリー受付終了！</p>`; return; }
+        if (diff <= 0) { ecEl.style.display='none'; return; }
         const d = Math.floor(diff / 86400000);
         const h = Math.floor((diff % 86400000) / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
@@ -405,5 +405,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 20
+   VERSION   : 21
 ============================================ */
