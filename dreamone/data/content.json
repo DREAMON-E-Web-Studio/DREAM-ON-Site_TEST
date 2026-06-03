@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ONE! (ドリワン)",
-    "version": "20"
+    "version": "21"
   },
   "site": {
     "title": "DREAM ONE!",
@@ -180,7 +180,7 @@
   "hero_images": [],
   "phase": "2",
   "entry_open_date": "2026-04-24T12:00:00",
-  "entry_close_date": "2026-05-31T23:59:00",
+  "entry_close_date": "2026-06-30T23:59:00",
   "event_datetime": "2026-07-11T16:30:00",
   "phase_text": {
     "1": {
