@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 29
+   VERSION   : 30
 ============================================ */
 (async () => {
   let data;
@@ -325,7 +325,13 @@
 
   // TEAMS
   const teamsGrid = document.getElementById('teams-grid');
-  teams.forEach(name => {
+  // サークル名AtoZで並び替え（大学名を除いたサークル名部分で比較）
+  const sortedTeams = [...teams].sort((a, b) => {
+    const nameA = a.includes(' ') ? a.split(' ').slice(1).join(' ') : a;
+    const nameB = b.includes(' ') ? b.split(' ').slice(1).join(' ') : b;
+    return nameA.localeCompare(nameB, 'en', { sensitivity: 'base' });
+  });
+  sortedTeams.forEach(name => {
     const card = document.createElement('div');
     card.className = 'team-card reveal';
     card.innerHTML = `<span>${name}</span>`;
@@ -336,7 +342,7 @@
   if (teamsSection) {
     const atoz = document.createElement('p');
     atoz.className = 'teams-note';
-    atoz.textContent = '(A to Z)';
+    atoz.textContent = '(サークル名 A to Z)';
     teamsSection.querySelector('.section-inner').appendChild(atoz);
   }
 
@@ -476,5 +482,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 29
+   VERSION   : 30
 ============================================ */
