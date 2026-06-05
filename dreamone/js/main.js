@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 26
+   VERSION   : 27
 ============================================ */
 (async () => {
   let data;
@@ -113,6 +113,7 @@
     phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   if (phase === '4' && data.event_datetime) {
+    phaseHTML += `<a href="#teams" class="btn btn-primary" style="margin:12px auto 4px;display:inline-flex;">出場サークルを見る</a>`;
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
@@ -125,9 +126,7 @@
       <a href="${entryFormUrl}" target="_blank" rel="noopener" class="btn btn-primary">エントリーはこちら</a>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   } else if (phase === '4') {
-    ctaHTML = `
-      <a href="#teams" class="btn btn-primary">出場サークルを見る</a>
-      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+    ctaHTML = ``; // フェーズ4はヒーロー内ボタンで完結
   } else {
     ctaHTML = `
       <span class="btn btn-disabled">${phase === '1' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
@@ -397,15 +396,12 @@
 
   // フェーズ4：セクション順序並べ替え＋NAVリンク更新
   if (phase === '4') {
-    const order = ['teams', 'timetable', 'judges', 'rules', 'about', 'qa'];
-    // ヘッダーとフッターの間にある全セクションの親要素を取得
-    const firstSection = document.getElementById('teams');
-    const parent = firstSection ? firstSection.parentNode : null;
-    if (parent) {
-      // 各セクションを順番通りに並べ替え
+    const main = document.getElementById('main-content');
+    if (main) {
+      const order = ['teams', 'timetable', 'judges', 'rules', 'about', 'qa'];
       order.forEach(id => {
         const el = document.getElementById(id);
-        if (el) parent.appendChild(el);
+        if (el) main.appendChild(el);
       });
     }
     // NAVリンクをフェーズ4用に更新
@@ -472,5 +468,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 26
+   VERSION   : 27
 ============================================ */
