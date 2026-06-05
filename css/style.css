@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 22
+   VERSION   : 28
 ============================================ */
 /* =============================================
    ============================================= */
@@ -276,5 +276,10 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 22
+   VERSION   : 28
 ============================================ */
+
+/* ---------- U-18 アカデミーブロック ---------- */
+.u18-section { margin-top: 40px; padding: 28px 24px; background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(124,58,237,0.12)); border: 1px solid rgba(233,30,140,0.3); border-radius: var(--radius-lg); }
+.u18-title { font-size: clamp(1rem, 4vw, 1.2rem); font-weight: 900; color: var(--accent); margin-bottom: 16px; line-height: 1.5; }
+.u18-body { font-size: 0.88rem; line-height: 2; color: var(--text-sub); white-space: pre-line; }
