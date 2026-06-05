@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 25
+   VERSION   : 26
 ============================================ */
 (async () => {
   let data;
@@ -397,19 +397,16 @@
 
   // フェーズ4：セクション順序並べ替え＋NAVリンク更新
   if (phase === '4') {
-    const main = document.querySelector('main') || document.body;
     const order = ['teams', 'timetable', 'judges', 'rules', 'about', 'qa'];
-    const sections = {};
-    order.forEach(id => { sections[id] = document.getElementById(id); });
-    // entry直前の位置を基準にセクションを並べ替え
-    const qa = document.getElementById('qa');
-    if (qa && qa.parentNode) {
+    // ヘッダーとフッターの間にある全セクションの親要素を取得
+    const firstSection = document.getElementById('teams');
+    const parent = firstSection ? firstSection.parentNode : null;
+    if (parent) {
+      // 各セクションを順番通りに並べ替え
       order.forEach(id => {
-        const el = sections[id];
-        if (el) qa.parentNode.insertBefore(el, qa.nextSibling);
+        const el = document.getElementById(id);
+        if (el) parent.appendChild(el);
       });
-      // qaを最後に
-      qa.parentNode.appendChild(qa);
     }
     // NAVリンクをフェーズ4用に更新
     const navList = document.getElementById('nav-list');
@@ -475,5 +472,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 25
+   VERSION   : 26
 ============================================ */
