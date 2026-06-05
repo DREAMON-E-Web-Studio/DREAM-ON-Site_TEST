@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 21
+   VERSION   : 23
 ============================================ */
 (async () => {
   let data;
@@ -101,11 +101,19 @@
     phaseHTML += `<div class="hero-entry-badge">✨ エントリーで出演確約 ✨</div>`;
   }
   phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
-  if (phase === '1' && data.entry_open_date) {
-    phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  if (phase === '1') {
+    if (event.date) {
+      phaseHTML += `<p class="phase-event-date">開催日：${event.date}</p>`;
+    }
+    if (data.entry_open_date) {
+      phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+    }
   }
   if (phase === '2' && data.entry_close_date) {
     phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  }
+  if (phase === '4' && data.event_datetime) {
+    phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
@@ -127,15 +135,22 @@
   }
   ctaEl.innerHTML = ctaHTML;
 
-  // カウントダウン（フェーズ1：開始まで / フェーズ2：締切まで）
-  const cdTarget = phase === '1' ? data.entry_open_date : phase === '2' ? data.entry_close_date : null;
+  // カウントダウン
+  const cdTarget = phase === '1' ? data.entry_open_date
+                 : phase === '2' ? data.entry_close_date
+                 : phase === '4' ? data.event_datetime
+                 : null;
   if (cdTarget) {
     const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
-    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : 'エントリー受付終了！';
+    const daysOnly = (phase === '1');
     const updateCd = () => {
       const diff = target - Date.now();
-      if (diff <= 0) { cdEl.innerHTML = `<span class="cd-open">${endMsg}</span>`; return; }
+      if (diff <= 0) {
+        cdEl.style.display = 'none';
+        if (phase === '1') cdEl.innerHTML = `<span class="cd-open">まもなくエントリー開始！</span>`;
+        return;
+      }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
@@ -405,5 +420,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 21
+   VERSION   : 23
 ============================================ */
