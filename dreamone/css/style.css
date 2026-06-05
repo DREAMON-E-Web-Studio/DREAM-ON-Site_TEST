@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 21
+   VERSION   : 23
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -101,7 +101,7 @@ ul { list-style: none; }
 .hero-content { position: relative; z-index: 2; text-align: center; padding: 0; color: #ffffff; max-width: 680px; }
 .hero-catchcopy { font-size: clamp(1rem, 4vw, 1.3rem); font-weight: 900; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 20px; animation: fadeInUp 0.8s 0.1s both; text-shadow: var(--accent-glow); }
 .hero-logo-wrap { margin-bottom: 16px; animation: fadeInUp 0.8s 0.3s both; }
-.hero-logo-img { max-width: min(480px, 90vw); margin: 0 auto; filter: drop-shadow(0 0 1px rgba(255,255,255,0.4)) drop-shadow(0 0 30px rgba(0,150,255,0.55)); }
+.hero-logo-img { max-width: min(480px, 90vw); margin: 0 auto; }
 .hero-vol-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; background: var(--accent-grd); padding: 5px 16px; border-radius: 100px; margin-bottom: 16px; animation: fadeInUp 0.8s 0.5s both; }
 .hero-info { margin-top: 8px; animation: fadeInUp 0.8s 0.65s both; }
 .hero-info .event-date { font-family: var(--font-en); font-size: clamp(1.2rem, 5vw, 1.8rem); letter-spacing: 0.08em; }
@@ -117,6 +117,9 @@ ul { list-style: none; }
 .phase-headline.phase-4 { color: #ffd84d; text-shadow: 0 0 18px rgba(255,200,40,0.5); }
 .phase-note { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.6; white-space: pre-line; }
 .phase-cd-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-bottom: 6px; margin-top: 10px; }
+.phase-event-date { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin: 8px 0 4px; letter-spacing: 0.05em; }
+.cd-box-large .cd-num { font-size: clamp(3rem, 15vw, 5rem); }
+.cd-box-large { min-width: 120px; padding: 20px 16px; }
 .phase-countdown { display: flex; gap: 10px; justify-content: center; margin: 10px 0; }
 .cd-box { display: flex; flex-direction: column; align-items: center; min-width: 58px; padding: 10px 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; }
 .cd-num { font-family: var(--font-en); font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1; color: #fff; }
@@ -184,7 +187,8 @@ ul { list-style: none; }
 .tt-row.dj .tt-act { color: var(--text-sub); font-style: italic; }
 
 /* ---------- Teams ---------- */
-.teams-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.teams-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-items: center; }
+.teams-grid:has(.team-card:only-child) { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
 .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; transition: transform 0.2s, border-color 0.2s; }
 .team-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,150,255,0.2); }
 
@@ -267,5 +271,5 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 21
+   VERSION   : 23
 ============================================ */
