@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 23
+   VERSION   : 24
 ============================================ */
 (async () => {
   let data;
@@ -143,26 +143,33 @@
   if (cdTarget) {
     const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
-    const daysOnly = (phase === '1');
+    const daysOnly = (phase === '1' || phase === '4');
     const updateCd = () => {
       const diff = target - Date.now();
       if (diff <= 0) {
         cdEl.style.display = 'none';
         if (phase === '1') cdEl.innerHTML = `<span class="cd-open">まもなくエントリー開始！</span>`;
+        if (phase === '4') cdEl.innerHTML = `<span class="cd-open">本日開催！</span>`;
         return;
       }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      cdEl.innerHTML = `
-        <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
-        <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
-        <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
-        <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
-      `;
+      if (daysOnly) {
+        cdEl.innerHTML = `<div class="cd-box cd-box-large"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>`;
+      } else {
+        cdEl.innerHTML = `
+          <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
+          <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
+          <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
+          <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
+        `;
+      }
     };
-    updateCd(); setInterval(updateCd, 1000);
+    if (daysOnly) setInterval(updateCd, 60000);
+    else setInterval(updateCd, 1000);
+    updateCd();
   }
 
   // ABOUT
@@ -292,43 +299,15 @@
     `;
 
   } else if (phase === '4') {
-    // フェーズ4：出場サークル発表＋開催日カウントダウン
-    let announcedImg = '';
-    if (data.announced_image) {
-      announcedImg = `<img src="${data.announced_image}" alt="出場サークル発表" class="entry-announced-img" />`;
-    }
-    let eventCdHtml = '';
-    if (data.event_datetime) {
-      eventCdHtml = `
-        <p class="entry-event-cd-label">イベント開催まで</p>
-        <div class="entry-countdown" id="entry-event-countdown"></div>`;
-    }
-    entryContent.innerHTML = `
-      ${announcedImg}
-      ${eventCdHtml}
-      <p class="entry-note" style="white-space:pre-line;margin-top:24px">${entryNote}</p>
-      <a href="#teams" class="btn btn-primary btn-large" style="margin-top:24px">出場サークルを見る</a>
-    `;
-    if (data.event_datetime) {
-      const target = new Date(data.event_datetime).getTime();
-      const ecEl = document.getElementById('entry-event-countdown');
-      const update = () => {
-        const diff = target - Date.now();
-        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">本日開催！</p>`; return; }
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        ecEl.innerHTML = `
-          <div class="entry-cd-wrap">
-            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
-          </div>`;
-      };
-      update(); setInterval(update, 1000);
-    }
+    // フェーズ4：ENTRYセクションを非表示
+    const entrySection = document.getElementById('entry');
+    if (entrySection) entrySection.style.display = 'none';
+    // NAVのENTRYリンクも非表示
+    document.querySelectorAll('#nav-list a').forEach(a => {
+      if (a.getAttribute('href') === '#entry') {
+        a.parentElement.style.display = 'none';
+      }
+    });
   }
 
   // TIMETABLE
@@ -420,5 +399,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 23
+   VERSION   : 24
 ============================================ */
