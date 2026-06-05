@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 29
+   VERSION   : 30
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -150,7 +150,9 @@
     }
   }
   if (phase === '2' && data.entry_close_date) {
-    phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+    const closeDate = data.entry_close_date ? new Date(data.entry_close_date) : null;
+    const closeDateStr = closeDate ? `${closeDate.getMonth()+1}/${closeDate.getDate()}` : '';
+    phaseHTML += `<p class="phase-cd-label">エントリー締切[${closeDateStr}]まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   if (phase === '4' && data.event_datetime) {
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
@@ -494,5 +496,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 29
+   VERSION   : 30
 ============================================ */
