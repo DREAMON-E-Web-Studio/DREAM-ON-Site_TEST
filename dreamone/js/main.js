@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 28
+   VERSION   : 29
 ============================================ */
 (async () => {
   let data;
@@ -331,6 +331,14 @@
     card.innerHTML = `<span>${name}</span>`;
     teamsGrid.appendChild(card);
   });
+  // AtoZラベル
+  const teamsSection = document.getElementById('teams');
+  if (teamsSection) {
+    const atoz = document.createElement('p');
+    atoz.className = 'teams-note';
+    atoz.textContent = '(A to Z)';
+    teamsSection.querySelector('.section-inner').appendChild(atoz);
+  }
 
   // Q&A
   const qaList = document.getElementById('qa-list');
@@ -468,5 +476,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 28
+   VERSION   : 29
 ============================================ */
