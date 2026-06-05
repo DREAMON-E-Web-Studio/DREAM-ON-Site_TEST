@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 28
+   VERSION   : 29
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -216,6 +216,7 @@ ul { list-style: none; }
 .team-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 8px 32px rgba(0,150,255,0.35); border-color: var(--accent); }
 .team-card:hover::before { opacity: 1; }
 .team-card span { position: relative; z-index: 1; font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--text); }
+.teams-note { text-align: center; font-size: 0.75rem; color: var(--text-sub); margin-top: 12px; }
 @keyframes teamShine {
   0% { left: -60%; }
   40%, 100% { left: 160%; }
@@ -302,7 +303,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 28
+   VERSION   : 29
 ============================================ */
 
 /* ---------- 審査員 ---------- */
