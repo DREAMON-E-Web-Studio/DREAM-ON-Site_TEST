@@ -1,34 +1,31 @@
 <!-- ============================================
      FILE TYPE : HTML
-     SITE      : DREAM ON! (ドリオン)
-     VERSION   : 21
+     SITE      : DREAM ONE! (ドリワン)
+     VERSION   : 24
 ============================================ -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DREAM ON! – K-POP COVER DANCE FES</title>
-  <meta name="description" content="K-POP COVER DANCE FES「DREAM ON!」は東京で開催されるK-POPカバーダンスの祭典です。" />
-  <meta property="og:title" content="DREAM ON! – K-POP COVER DANCE FES" />
-  <meta property="og:type" content="website" />
+  <title>DREAM ONE! Vol.5 – 大学対抗 K-POP COVER DANCE CONTEST</title>
+  <meta name="description" content="大学生によるK-POPカバーダンスの頂点を決める大会「DREAM ONE!」" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=21" />
+  <link rel="stylesheet" href="css/style.css?v=24" />
 </head>
 <body>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="#top" class="logo">
-        <img src="images/logo.png"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-             alt="DREAM ON!" class="logo-img" />
-        <span class="logo-text" style="display:none">DREAM ON!</span>
+        <img src="images/logo.png" alt="DREAM ONE!" class="logo-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="display:none">DREAM ONE!</span>
       </a>
-      <a href="dreamone/index.html" class="site-switch-btn site-switch-btn--one">DREAM ONE! →</a>
+      <a href="../index.html" class="site-switch-btn site-switch-btn--on">← DREAM ON!</a>
       <nav class="global-nav" id="global-nav">
         <ul id="nav-list"></ul>
       </nav>
@@ -40,15 +37,17 @@
 
   <section class="hero" id="top">
     <div class="hero-slider" id="hero-slider"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-particles" id="hero-particles"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-vol-badge" id="hero-vol-badge"></div>
+      <p class="hero-catchcopy" id="hero-catchcopy"></p>
       <div class="hero-logo-wrap">
-        <img src="images/logo.png" alt="DREAM ON!" class="hero-logo-img"
+        <img src="images/logo.png" alt="DREAM ONE!" class="hero-logo-img"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <h1 class="hero-title" style="display:none">DREAM ON!</h1>
+        <h1 class="hero-title" style="display:none">DREAM ONE!</h1>
       </div>
-      <p class="hero-sub">K-POP COVER DANCE FES</p>
+      <div class="hero-vol-badge" id="hero-vol-badge"></div>
       <div class="hero-info" id="hero-info"></div>
       <div class="hero-phase" id="hero-phase"></div>
       <div class="hero-cta" id="hero-cta"></div>
@@ -57,24 +56,25 @@
         <div class="scroll-line"></div>
       </div>
     </div>
-    <div class="hero-dots" id="hero-dots"></div>
   </section>
 
   <section class="section" id="about">
     <div class="section-inner">
       <h2 class="section-title">ABOUT</h2>
       <div class="about-lead" id="about-lead"></div>
-      <div class="about-video">
-        <iframe id="about-video-iframe" src="" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen title="DREAM ON! ダイジェスト映像"></iframe>
-      </div>
       <p class="about-body" id="about-body"></p>
       <div class="features-grid" id="features-grid"></div>
     </div>
   </section>
 
-  <section class="section section-alt" id="timetable">
+  <section class="section section-alt" id="rules">
+    <div class="section-inner">
+      <h2 class="section-title">RULES</h2>
+      <div class="rules-grid" id="rules-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="timetable">
     <div class="section-inner">
       <h2 class="section-title">TIMETABLE</h2>
       <div class="timetable-header" id="timetable-header"></div>
@@ -82,15 +82,14 @@
     </div>
   </section>
 
-  <section class="section" id="teams">
+  <section class="section section-alt" id="teams">
     <div class="section-inner">
-      <h2 class="section-title">出演チーム</h2>
+      <h2 class="section-title">出場サークル</h2>
       <div class="teams-grid" id="teams-grid"></div>
-      <p class="teams-note">(a to z)</p>
     </div>
   </section>
 
-  <section class="section section-alt entry-section" id="entry">
+  <section class="section entry-section" id="entry">
     <div class="section-inner">
       <h2 class="section-title">ENTRY</h2>
       <div class="entry-content" id="entry-content">
@@ -99,7 +98,7 @@
     </div>
   </section>
 
-  <section class="section" id="qa">
+  <section class="section section-alt" id="qa">
     <div class="section-inner">
       <h2 class="section-title">Q&A</h2>
       <div class="qa-list" id="qa-list"></div>
@@ -109,25 +108,24 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-logo">
-        <img src="images/logo.png"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-             alt="DREAM ON!" />
-        <span class="logo-text" style="display:none">DREAM ON!</span>
+        <img src="images/logo.png" alt="DREAM ONE!"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="display:none">DREAM ONE!</span>
       </div>
       <div class="footer-social" id="footer-social"></div>
       <div class="footer-links">
-        <a href="#top">DREAM ON! 運営事務局</a>
+        <a href="#top">DREAM ONE! 運営事務局</a>
         <a href="https://www.sib.tv/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
       </div>
-      <p class="footer-copy">© DREAM ON! All Rights Reserved.</p>
+      <p class="footer-copy">© DREAM ONE! All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js?v=21"></script>
+  <script src="js/main.js?v=24"></script>
 </body>
 </html>
 <!-- ============================================
      FILE TYPE : HTML
-     SITE      : DREAM ON! (ドリオン)
-     VERSION   : 21
+     SITE      : DREAM ONE! (ドリワン)
+     VERSION   : 24
 ============================================ -->
