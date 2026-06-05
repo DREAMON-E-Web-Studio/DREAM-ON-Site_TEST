@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 21
+   VERSION   : 28
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -135,15 +135,25 @@
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
-  const entryFormUrl = '#entry'; // エントリーセクションへ
+  const entryFormUrl = data.entry_form_url || 'mailto:k-dancefes@shibuya-o.com';
 
   // フェーズ表示（見出し＋補足＋必要ならカウントダウン）
   let phaseHTML = `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
-  if (phase === '1' && data.entry_open_date) {
-    phaseHTML += `<div class="phase-countdown" id="phase-countdown"></div>`;
+  if (phase === '1') {
+    // 開催日テキスト表示
+    if (event.date) {
+      phaseHTML += `<p class="phase-event-date">開催日：${event.date}</p>`;
+    }
+    // エントリーまでDaysカウントダウン
+    if (data.entry_open_date) {
+      phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+    }
   }
   if (phase === '2' && data.entry_close_date) {
     phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+  }
+  if (phase === '4' && data.event_datetime) {
+    phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
@@ -165,28 +175,40 @@
   }
   ctaEl.innerHTML = ctaHTML;
 
-  // カウントダウン処理（フェーズ1：開始まで / フェーズ2：締切まで）
-  const cdTarget = phase === '1' ? data.entry_open_date : phase === '2' ? data.entry_close_date : null;
+  // カウントダウン処理
+  const cdTarget = phase === '1' ? data.entry_open_date
+                 : phase === '2' ? data.entry_close_date
+                 : phase === '4' ? data.event_datetime
+                 : null;
   if (cdTarget) {
     const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
-    const endMsg = phase === '1' ? 'まもなくエントリー開始！' : '';
+    const daysOnly = (phase === '1'); // フェーズ1はDaysのみ
     const updateCountdown = () => {
       const diff = target - Date.now();
-      if (diff <= 0) { cdEl.style.display='none'; if(endMsg) cdEl.innerHTML=`<span class="cd-open">${endMsg}</span>`; return; }
+      if (diff <= 0) {
+        cdEl.style.display = 'none';
+        if (phase === '1') cdEl.innerHTML = `<span class="cd-open">まもなくエントリー開始！</span>`;
+        return;
+      }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      cdEl.innerHTML = `
-        <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
-        <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
-        <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
-        <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
-      `;
+      if (daysOnly) {
+        cdEl.innerHTML = `<div class="cd-box cd-box-large"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>`;
+      } else {
+        cdEl.innerHTML = `
+          <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
+          <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
+          <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
+          <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
+        `;
+      }
     };
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    if (!daysOnly) setInterval(updateCountdown, 1000);
+    else setInterval(updateCountdown, 60000); // Daysのみは1分ごとに更新
   }
 
   document.getElementById('about-lead').textContent = about.lead;
@@ -204,6 +226,15 @@
     `;
     featuresGrid.appendChild(card);
   });
+
+  // U-18 アカデミーブロック
+  if (about.u18) {
+    const u18El = document.getElementById('u18-section');
+    if (u18El) {
+      document.getElementById('u18-title').textContent = about.u18.title;
+      document.getElementById('u18-body').textContent = about.u18.body;
+    }
+  }
 
   /* ============================================================
      TIMETABLE
@@ -269,7 +300,7 @@
           <div class="step-text"><strong>審査・結果通知</strong><span>動画審査を経て出演チームを決定、メールにてご連絡</span></div>
         </div>
       </div>
-      <a href="mailto:k-dancefes@shibuya-o.com" class="btn btn-primary btn-large">エントリーする</a>
+      <a href="${entryFormUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-large">エントリーする</a>
       <p class="entry-note">※現在のエントリー状況はSNSをご確認ください</p>
     `;
     if (data.entry_close_date) {
@@ -463,5 +494,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 21
+   VERSION   : 28
 ============================================ */
