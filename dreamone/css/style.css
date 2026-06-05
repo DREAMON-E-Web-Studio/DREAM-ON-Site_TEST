@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 27
+   VERSION   : 28
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -187,10 +187,39 @@ ul { list-style: none; }
 .tt-row.dj .tt-act { color: var(--text-sub); font-style: italic; }
 
 /* ---------- Teams ---------- */
-.teams-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-items: center; }
-.teams-grid:has(.team-card:only-child) { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
-.team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; transition: transform 0.2s, border-color 0.2s; }
-.team-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,150,255,0.2); }
+.teams-grid { display: grid; grid-template-columns: 1fr; gap: 12px; justify-items: center; }
+.teams-grid:has(.team-card:only-child) { max-width: 480px; margin-left: auto; margin-right: auto; }
+.team-card {
+  position: relative; width: 100%; overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,80,200,0.25), rgba(0,180,255,0.12));
+  border: 1px solid rgba(0,200,255,0.3);
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  cursor: default;
+}
+.team-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,150,255,0.15), rgba(0,220,255,0.05));
+  opacity: 0; transition: opacity 0.3s;
+}
+.team-card::after {
+  content: '';
+  position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: skewX(-20deg);
+  animation: teamShine 4s ease-in-out infinite;
+}
+.team-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 8px 32px rgba(0,150,255,0.35); border-color: var(--accent); }
+.team-card:hover::before { opacity: 1; }
+.team-card span { position: relative; z-index: 1; font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--text); }
+@keyframes teamShine {
+  0% { left: -60%; }
+  40%, 100% { left: 160%; }
+}
 
 /* ---------- Entry ---------- */
 .entry-section { text-align: center; }
@@ -256,7 +285,9 @@ ul { list-style: none; }
   .hero { padding-top: 120px; padding-bottom: 80px; }
 
   .features-grid { grid-template-columns: repeat(4, 1fr); }
-  .teams-grid { grid-template-columns: repeat(3, 1fr); }
+  .teams-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-card { padding: 22px 28px; }
+  .team-card span { font-size: 1.1rem; }
   .entry-steps { flex-direction: row; }
   .entry-step { flex-direction: column; text-align: center; flex: 1; }
   .site-footer { padding: 32px 0 24px; }
@@ -265,13 +296,13 @@ ul { list-style: none; }
   .footer-links { margin-bottom: 12px; }
 }
 @media (min-width: 1024px) {
-  .teams-grid { grid-template-columns: repeat(4, 1fr); }
+  .teams-grid { grid-template-columns: repeat(2, 1fr); }
   .global-nav ul li a { padding: 8px 16px; font-size: 1rem; }
 }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 27
+   VERSION   : 28
 ============================================ */
 
 /* ---------- 審査員 ---------- */
@@ -296,4 +327,25 @@ ul { list-style: none; }
 /* PC：横3列 */
 @media (min-width: 640px) {
   .judges-grid { flex-direction: row; justify-content: center; align-items: flex-start; gap: 32px; }
+}
+
+/* ---------- Teams Section 豪華演出 ---------- */
+.teams-section {
+  position: relative;
+  background: var(--bg-alt);
+  overflow: hidden;
+}
+.teams-section::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: 50%;
+  transform: translateX(-50%);
+  width: 80%; height: 60%;
+  background: radial-gradient(ellipse, rgba(0,150,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: teamsGlow 4s ease-in-out infinite alternate;
+}
+@keyframes teamsGlow {
+  from { opacity: 0.6; transform: translateX(-50%) scale(1); }
+  to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
 }
