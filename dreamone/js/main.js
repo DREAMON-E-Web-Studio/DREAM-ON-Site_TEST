@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 33
+   VERSION   : 34
 ============================================ */
 (async () => {
   let data;
@@ -40,22 +40,21 @@
 
   // パーティクル
   const particlesEl = document.getElementById('hero-particles');
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 80; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 8 + 2;
-    // 白・水色・ピンクをランダムに
-    const colors = ['rgba(255,255,255,0.85)', 'rgba(91,200,245,0.8)', 'rgba(244,114,182,0.7)'];
+    const size = Math.random() * 10 + 3;
+    const colors = ['rgba(255,255,255,0.95)', 'rgba(91,200,245,0.95)', 'rgba(244,114,182,0.9)', 'rgba(251,191,36,0.85)'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     p.style.cssText = `
       width: ${size}px; height: ${size}px;
       left: ${Math.random() * 100}%;
       background: ${color};
-      animation-duration: ${Math.random() * 10 + 6}s;
-      animation-delay: ${Math.random() * 8}s;
+      animation-duration: ${Math.random() * 8 + 5}s;
+      animation-delay: ${Math.random() * 6}s;
       opacity: 0;
-      filter: blur(${size > 5 ? 1 : 0}px);
-      box-shadow: 0 0 ${size * 2}px ${color};
+      filter: blur(${size > 6 ? 1.5 : 0}px);
+      box-shadow: 0 0 ${size * 3}px ${color}, 0 0 ${size * 6}px ${color};
     `;
     particlesEl.appendChild(p);
   }
@@ -488,5 +487,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 33
+   VERSION   : 34
 ============================================ */
