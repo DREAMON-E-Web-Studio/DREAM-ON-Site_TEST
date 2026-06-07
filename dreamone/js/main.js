@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 32
+   VERSION   : 33
 ============================================ */
 (async () => {
   let data;
@@ -40,18 +40,22 @@
 
   // パーティクル
   const particlesEl = document.getElementById('hero-particles');
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 60; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 6 + 1;
-    const opacity = Math.random() * 0.5 + 0.2;
+    const size = Math.random() * 8 + 2;
+    // 白・水色・ピンクをランダムに
+    const colors = ['rgba(255,255,255,0.85)', 'rgba(91,200,245,0.8)', 'rgba(244,114,182,0.7)'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
     p.style.cssText = `
       width: ${size}px; height: ${size}px;
       left: ${Math.random() * 100}%;
-      animation-duration: ${Math.random() * 10 + 5}s;
+      background: ${color};
+      animation-duration: ${Math.random() * 10 + 6}s;
       animation-delay: ${Math.random() * 8}s;
       opacity: 0;
-      filter: blur(${size > 4 ? 1 : 0}px);
+      filter: blur(${size > 5 ? 1 : 0}px);
+      box-shadow: 0 0 ${size * 2}px ${color};
     `;
     particlesEl.appendChild(p);
   }
@@ -484,5 +488,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 32
+   VERSION   : 33
 ============================================ */
