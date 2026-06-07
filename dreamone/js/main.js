@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 30
+   VERSION   : 32
 ============================================ */
 (async () => {
   let data;
@@ -40,16 +40,18 @@
 
   // パーティクル
   const particlesEl = document.getElementById('hero-particles');
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 4 + 1;
+    const size = Math.random() * 6 + 1;
+    const opacity = Math.random() * 0.5 + 0.2;
     p.style.cssText = `
       width: ${size}px; height: ${size}px;
       left: ${Math.random() * 100}%;
-      animation-duration: ${Math.random() * 8 + 6}s;
-      animation-delay: ${Math.random() * 6}s;
+      animation-duration: ${Math.random() * 10 + 5}s;
+      animation-delay: ${Math.random() * 8}s;
       opacity: 0;
+      filter: blur(${size > 4 ? 1 : 0}px);
     `;
     particlesEl.appendChild(p);
   }
@@ -482,5 +484,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 30
+   VERSION   : 32
 ============================================ */
