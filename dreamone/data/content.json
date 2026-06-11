@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ONE! (ドリワン)",
-    "version": "28"
+    "version": "37"
   },
   "site": {
     "title": "DREAM ONE!",
@@ -120,16 +120,32 @@
   ],
   "timetable": [
     {
-      "time": "13:00",
+      "time": "15:00",
       "act": "OPEN / 開場"
     },
     {
-      "time": "13:30",
-      "act": "START / 開演"
+      "time": "16:00",
+      "act": "前半戦 START"
     },
     {
-      "time": "17:00",
-      "act": "表彰式 / FINALE"
+      "time": "16:52",
+      "act": "休憩"
+    },
+    {
+      "time": "17:09",
+      "act": "後半戦 START"
+    },
+    {
+      "time": "18:01",
+      "act": "休憩・審査タイム"
+    },
+    {
+      "time": "18:41",
+      "act": "大学対抗授賞式"
+    },
+    {
+      "time": "19:10",
+      "act": "CLOSE"
     }
   ],
   "qa": [
