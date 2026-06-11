@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 42
+   VERSION   : 43
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -95,10 +95,10 @@ ul { list-style: none; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center center; opacity: 0; transition: opacity 1s ease; }
 .hero-slide.active { opacity: 1; }
 .hero-bg-pattern { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(91,200,245,0.22) 0%, transparent 55%), radial-gradient(ellipse at 75% 70%, rgba(244,114,182,0.15) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, rgba(167,139,250,0.12) 0%, transparent 50%); z-index: 0; }
-.hero-particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.hero-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
 .particle { position: absolute; border-radius: 50%; background: var(--accent); opacity: 0; animation: floatUp linear infinite; }
-.hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); z-index: 1; }
-.hero-content { position: relative; z-index: 2; text-align: center; padding: 0; color: #ffffff; max-width: 680px; }
+.hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); z-index: 2; }
+.hero-content { position: relative; z-index: 3; text-align: center; padding: 0; color: #ffffff; max-width: 680px; }
 .hero-catchcopy { font-size: clamp(1rem, 4vw, 1.3rem); font-weight: 900; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 20px; animation: fadeInUp 0.8s 0.1s both; text-shadow: var(--accent-glow); }
 .hero-logo-wrap { margin-bottom: 16px; animation: fadeInUp 0.8s 0.3s both; }
 .hero-logo-img { max-width: min(480px, 90vw); margin: 0 auto; }
@@ -137,7 +137,7 @@ ul { list-style: none; }
 .entry-cd-unit { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--text-sub); margin-top: 4px; }
 .entry-cd-open { font-weight: 900; font-size: 1.2rem; color: var(--accent); margin: 12px 0; }
 .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; animation: fadeInUp 0.8s 0.9s both; }
-.hero-scroll-hint { position: relative; margin-top: 32px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
+.hero-scroll-hint { position: relative; margin-top: 32px; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; animation: fadeIn 1s 1.2s both; }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(0,200,255,0.6), transparent); animation: scrollPulse 1.8s ease-in-out infinite; }
 
 /* ---------- Buttons ---------- */
@@ -151,7 +151,7 @@ ul { list-style: none; }
 
 /* ---------- Sections ---------- */
 .section { padding: 72px 0; background: transparent; }
-.section-alt { background: rgba(8,14,32,0.7); }
+.section-alt { background: rgba(8,14,32,0.5); }
 .section-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 .section-title { font-family: var(--font-en); font-size: clamp(2.2rem, 8vw, 3.5rem); letter-spacing: 0.1em; text-align: center; margin-bottom: 40px; background: var(--accent-grd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
@@ -250,7 +250,7 @@ ul { list-style: none; }
 .qa-answer-inner { padding: 0 20px 18px 58px; font-size: 0.88rem; line-height: 1.8; color: var(--text-sub); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 48px 0 32px; }
+.site-footer { background: rgba(8,14,32,0.7); border-top: 1px solid var(--border); padding: 48px 0 32px; }
 .footer-inner { max-width: 600px; margin: 0 auto; padding: 0 20px; text-align: center; }
 .footer-logo { display: flex; justify-content: center; margin-bottom: 20px; }
 .footer-logo img { height: 48px; width: auto; object-fit: contain; }
@@ -303,7 +303,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 42
+   VERSION   : 43
 ============================================ */
 
 /* ---------- 審査員 ---------- */
@@ -333,7 +333,7 @@ ul { list-style: none; }
 /* ---------- Teams Section 豪華演出 ---------- */
 .teams-section {
   position: relative;
-  background: var(--bg-alt);
+  background: rgba(8,14,32,0.5);
   overflow: hidden;
 }
 .teams-section::before {
