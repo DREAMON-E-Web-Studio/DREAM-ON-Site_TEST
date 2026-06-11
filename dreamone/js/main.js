@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 45
+   VERSION   : 46
 ============================================ */
 (async () => {
   let data;
@@ -40,7 +40,7 @@
 
   // パーティクル
   const particlesEl = document.getElementById('hero-particles');
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 50; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     const size = Math.random() * 10 + 3;
@@ -487,5 +487,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 45
+   VERSION   : 46
 ============================================ */
