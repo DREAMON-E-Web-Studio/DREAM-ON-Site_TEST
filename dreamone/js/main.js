@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 46
+   VERSION   : 47
 ============================================ */
 (async () => {
   let data;
@@ -43,7 +43,7 @@
   for (let i = 0; i < 50; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 10 + 3;
+    const size = Math.random() * 4 + 1;
     const colors = ['rgba(255,255,255,0.95)', 'rgba(91,200,245,0.95)', 'rgba(244,114,182,0.9)', 'rgba(251,191,36,0.85)'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     p.style.cssText = `
@@ -53,8 +53,7 @@
       animation-duration: ${Math.random() * 8 + 5}s;
       animation-delay: ${Math.random() * 6}s;
       opacity: 0;
-      filter: blur(${size > 6 ? 1.5 : 0}px);
-      box-shadow: 0 0 ${size * 3}px ${color}, 0 0 ${size * 6}px ${color};
+      box-shadow: 0 0 ${size * 2}px ${color};
     `;
     particlesEl.appendChild(p);
   }
@@ -487,5 +486,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 46
+   VERSION   : 47
 ============================================ */
