@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 39
+   VERSION   : 41
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -95,7 +95,7 @@ ul { list-style: none; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center center; opacity: 0; transition: opacity 1s ease; }
 .hero-slide.active { opacity: 1; }
 .hero-bg-pattern { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(91,200,245,0.22) 0%, transparent 55%), radial-gradient(ellipse at 75% 70%, rgba(244,114,182,0.15) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, rgba(167,139,250,0.12) 0%, transparent 50%); z-index: 0; }
-.hero-particles { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .particle { position: absolute; border-radius: 50%; background: var(--accent); opacity: 0; animation: floatUp linear infinite; }
 .hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; padding: 0; color: #ffffff; max-width: 680px; }
@@ -303,7 +303,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 39
+   VERSION   : 41
 ============================================ */
 
 /* ---------- 審査員 ---------- */
