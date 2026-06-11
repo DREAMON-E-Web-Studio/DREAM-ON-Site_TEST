@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 44
+   VERSION   : 45
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -151,7 +151,7 @@ ul { list-style: none; }
 
 /* ---------- Sections ---------- */
 .section { padding: 72px 0; background: transparent; }
-.section-alt { background: rgba(8,14,32,0.5); }
+.section-alt { background: rgba(8,14,32,0.78); }
 .section-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 .section-title { font-family: var(--font-en); font-size: clamp(2.2rem, 8vw, 3.5rem); letter-spacing: 0.1em; text-align: center; margin-bottom: 40px; background: var(--accent-grd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
@@ -250,7 +250,7 @@ ul { list-style: none; }
 .qa-answer-inner { padding: 0 20px 18px 58px; font-size: 0.88rem; line-height: 1.8; color: var(--text-sub); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: rgba(8,14,32,0.7); border-top: 1px solid var(--border); padding: 48px 0 32px; }
+.site-footer { background: rgba(8,14,32,0.85); border-top: 1px solid var(--border); padding: 48px 0 32px; }
 .footer-inner { max-width: 600px; margin: 0 auto; padding: 0 20px; text-align: center; }
 .footer-logo { display: flex; justify-content: center; margin-bottom: 20px; }
 .footer-logo img { height: 48px; width: auto; object-fit: contain; }
@@ -303,7 +303,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 44
+   VERSION   : 45
 ============================================ */
 
 /* ---------- 審査員 ---------- */
@@ -333,7 +333,7 @@ ul { list-style: none; }
 /* ---------- Teams Section 豪華演出 ---------- */
 .teams-section {
   position: relative;
-  background: rgba(8,14,32,0.5);
+  background: rgba(8,14,32,0.78);
   overflow: hidden;
 }
 .teams-section::before {
