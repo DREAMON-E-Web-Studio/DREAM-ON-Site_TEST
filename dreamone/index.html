@@ -1,0 +1,148 @@
+<!-- ============================================
+     FILE TYPE : HTML
+     SITE      : DREAM ONE! (ドリワン)
+     VERSION   : 48
+============================================ -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DREAM ONE! Vol.5 – 大学対抗 K-POP COVER DANCE CONTEST</title>
+  <meta name="description" content="大学生によるK-POPカバーダンスの頂点を決める大会「DREAM ONE!」" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=48" />
+</head>
+<body>
+  <div class="hero-particles" id="hero-particles"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#top" class="logo">
+        <img src="images/logo.png" alt="DREAM ONE!" class="logo-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="display:none">DREAM ONE!</span>
+      </a>
+      <a href="../index.html" class="site-switch-btn site-switch-btn--on">← DREAM ON!</a>
+      <nav class="global-nav" id="global-nav">
+        <ul id="nav-list"></ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-slider" id="hero-slider"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-catchcopy" id="hero-catchcopy"></p>
+      <div class="hero-logo-wrap">
+        <img src="images/logo.png" alt="DREAM ONE!" class="hero-logo-img"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <h1 class="hero-title" style="display:none">DREAM ONE!</h1>
+      </div>
+      <div class="hero-vol-badge" id="hero-vol-badge"></div>
+      <div class="hero-info" id="hero-info"></div>
+      <div class="hero-phase" id="hero-phase"></div>
+      <div class="hero-cta" id="hero-cta"></div>
+      <div class="hero-scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content">
+  <section class="section section-alt" id="about">
+    <div class="section-inner">
+      <h2 class="section-title">ABOUT</h2>
+      <div class="about-lead" id="about-lead"></div>
+      <p class="about-body" id="about-body"></p>
+      <div class="features-grid" id="features-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="section-inner">
+      <h2 class="section-title">RULES</h2>
+      <div class="rules-grid" id="rules-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="timetable">
+    <div class="section-inner">
+      <h2 class="section-title">TIMETABLE</h2>
+      <div class="timetable-header" id="timetable-header"></div>
+      <div class="timetable-list" id="timetable-list"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt teams-section" id="teams">
+    <div class="section-inner">
+      <h2 class="section-title">出場サークル</h2>
+      <div class="teams-grid" id="teams-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="judges">
+    <div class="section-inner">
+      <h2 class="section-title">審査員</h2>
+      <div class="judges-grid" id="judges-grid"></div>
+    </div>
+  </section>
+
+  <section class="section entry-section" id="entry">
+    <div class="section-inner">
+      <h2 class="section-title">ENTRY</h2>
+      <div class="entry-content" id="entry-content"></div>
+    </div>
+  </section>
+
+  <section class="section" id="qa">
+    <div class="section-inner">
+      <h2 class="section-title">Q&A</h2>
+      <div class="qa-list" id="qa-list"></div>
+    </div>
+  </section>
+  </main>
+
+  <!-- 審査員ポップアップ -->
+  <div class="judge-popup-overlay" id="judge-popup-overlay">
+    <div class="judge-popup" id="judge-popup">
+      <button class="judge-popup-close" id="judge-popup-close">✕</button>
+      <img class="judge-popup-img" id="judge-popup-img" src="" alt="" />
+      <h3 class="judge-popup-name" id="judge-popup-name"></h3>
+      <p class="judge-popup-profile" id="judge-popup-profile"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="DREAM ONE!"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="logo-text" style="display:none">DREAM ONE!</span>
+      </div>
+      <div class="footer-social" id="footer-social"></div>
+      <div class="footer-links">
+        <a href="#top">DREAM ONE! 運営事務局</a>
+        <a href="https://www.sib.tv/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">© DREAM ONE! All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js?v=48"></script>
+</body>
+</html>
+<!-- ============================================
+     FILE TYPE : HTML
+     SITE      : DREAM ONE! (ドリワン)
+     VERSION   : 48
+============================================ -->
