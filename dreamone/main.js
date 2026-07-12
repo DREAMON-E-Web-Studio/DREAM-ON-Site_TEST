@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 49
+   VERSION   : 51
 ============================================ */
 (async () => {
   let data;
@@ -87,7 +87,7 @@
   document.getElementById('hero-vol-badge').textContent = `Vol.${event.vol} — ${event.anniversary}`;
   document.getElementById('hero-info').innerHTML = `
     <div class="event-date">${event.date}</div>
-    <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
+    <div class="event-venue">@ ${event.venue}\n${event.open}\n${event.start}</div>
   `;
 
   /* ============================================================
@@ -316,7 +316,7 @@
   // TIMETABLE
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
-    <div class="tt-venue">${event.venue} / ${event.open} – ${event.start}</div>
+    <div class="tt-venue">${event.venue}\n${event.open}\n${event.start}</div>
   `;
   const ttList = document.getElementById('timetable-list');
   if (!timetable || timetable.length === 0) {
@@ -510,5 +510,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 49
+   VERSION   : 51
 ============================================ */
