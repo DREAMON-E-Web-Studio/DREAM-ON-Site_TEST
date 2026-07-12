@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -105,7 +105,7 @@ ul { list-style: none; }
 .hero-vol-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; background: var(--accent-grd); padding: 5px 16px; border-radius: 100px; margin-bottom: 16px; animation: fadeInUp 0.8s 0.5s both; }
 .hero-info { margin-top: 8px; animation: fadeInUp 0.8s 0.65s both; }
 .hero-info .event-date { font-family: var(--font-en); font-size: clamp(1.2rem, 5vw, 1.8rem); letter-spacing: 0.08em; }
-.hero-info .event-venue { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+.hero-info .event-venue { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 4px; white-space: pre-line; }
 .hero-entry-badge { display: inline-block; margin-top: 16px; padding: 8px 20px; border: 1.5px solid var(--accent); border-radius: 100px; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.08em; animation: fadeInUp 0.8s 0.75s both; box-shadow: var(--accent-glow); }
 
 /* ---------- Phase（フェーズ） ---------- */
@@ -177,7 +177,7 @@ ul { list-style: none; }
 /* ---------- Timetable ---------- */
 .timetable-header { text-align: center; margin-bottom: 28px; }
 .timetable-header .tt-date { font-family: var(--font-en); font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: 0.08em; }
-.timetable-header .tt-venue { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px; }
+.timetable-header .tt-venue { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px; white-space: pre-line; }
 .timetable-list { display: flex; flex-direction: column; gap: 2px; }
 .tt-row { display: flex; align-items: center; border-radius: var(--radius); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); transition: transform 0.15s; }
 .tt-row:hover { transform: translateX(4px); }
@@ -303,7 +303,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 
 /* ---------- 審査員 ---------- */
@@ -328,6 +328,43 @@ ul { list-style: none; }
 /* PC：横3列 */
 @media (min-width: 640px) {
   .judges-grid { flex-direction: row; justify-content: center; align-items: flex-start; gap: 32px; }
+}
+
+/* ---------- Coming Soon ---------- */
+.coming-soon-box {
+  position: relative;
+  padding: 48px 24px;
+  text-align: center;
+  border: 1px solid rgba(91,200,245,0.3);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(91,200,245,0.08), rgba(167,139,250,0.08));
+  overflow: hidden;
+}
+.coming-soon-box::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 70%; height: 60%;
+  background: radial-gradient(ellipse, rgba(91,200,245,0.18) 0%, transparent 70%);
+  animation: teamsGlow 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.coming-soon-text {
+  position: relative;
+  font-family: var(--font-en);
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  letter-spacing: 0.15em;
+  background: var(--accent-grd);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-shadow: none;
+}
+.coming-soon-sub {
+  position: relative;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--text-sub);
+  letter-spacing: 0.05em;
 }
 
 /* ---------- Teams Section 豪華演出 ---------- */

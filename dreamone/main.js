@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 (async () => {
   let data;
@@ -319,35 +319,51 @@
     <div class="tt-venue">${event.venue} / ${event.open} – ${event.start}</div>
   `;
   const ttList = document.getElementById('timetable-list');
-  timetable.forEach(row => {
-    const isSpecial = row.act.includes('OPEN') || row.act.includes('START') || row.act.includes('FINALE') || row.act.includes('表彰');
-    const div = document.createElement('div');
-    div.className = `tt-row reveal${isSpecial ? ' dj' : ''}`;
-    div.innerHTML = `<div class="tt-time">${row.time}</div><div class="tt-act">${row.act}</div>`;
-    ttList.appendChild(div);
-  });
+  if (!timetable || timetable.length === 0) {
+    ttList.innerHTML = `
+      <div class="coming-soon-box reveal">
+        <div class="coming-soon-text">COMING SOON</div>
+        <div class="coming-soon-sub">タイムテーブルは決まり次第発表いたします</div>
+      </div>`;
+  } else {
+    timetable.forEach(row => {
+      const isSpecial = row.act.includes('OPEN') || row.act.includes('START') || row.act.includes('FINALE') || row.act.includes('表彰');
+      const div = document.createElement('div');
+      div.className = `tt-row reveal${isSpecial ? ' dj' : ''}`;
+      div.innerHTML = `<div class="tt-time">${row.time}</div><div class="tt-act">${row.act}</div>`;
+      ttList.appendChild(div);
+    });
+  }
 
   // TEAMS
   const teamsGrid = document.getElementById('teams-grid');
-  // サークル名AtoZで並び替え（大学名を除いたサークル名部分で比較）
-  const sortedTeams = [...teams].sort((a, b) => {
-    const nameA = a.includes(' ') ? a.split(' ').slice(1).join(' ') : a;
-    const nameB = b.includes(' ') ? b.split(' ').slice(1).join(' ') : b;
-    return nameA.localeCompare(nameB, 'en', { sensitivity: 'base' });
-  });
-  sortedTeams.forEach(name => {
-    const card = document.createElement('div');
-    card.className = 'team-card reveal';
-    card.innerHTML = `<span>${name}</span>`;
-    teamsGrid.appendChild(card);
-  });
-  // AtoZラベル
-  const teamsSection = document.getElementById('teams');
-  if (teamsSection) {
-    const atoz = document.createElement('p');
-    atoz.className = 'teams-note';
-    atoz.textContent = '(サークル名 A to Z)';
-    teamsSection.querySelector('.section-inner').appendChild(atoz);
+  if (!teams || teams.length === 0) {
+    teamsGrid.innerHTML = `
+      <div class="coming-soon-box reveal">
+        <div class="coming-soon-text">COMING SOON</div>
+        <div class="coming-soon-sub">出場サークルは決まり次第発表いたします</div>
+      </div>`;
+  } else {
+    // サークル名AtoZで並び替え（大学名を除いたサークル名部分で比較）
+    const sortedTeams = [...teams].sort((a, b) => {
+      const nameA = a.includes(' ') ? a.split(' ').slice(1).join(' ') : a;
+      const nameB = b.includes(' ') ? b.split(' ').slice(1).join(' ') : b;
+      return nameA.localeCompare(nameB, 'en', { sensitivity: 'base' });
+    });
+    sortedTeams.forEach(name => {
+      const card = document.createElement('div');
+      card.className = 'team-card reveal';
+      card.innerHTML = `<span>${name}</span>`;
+      teamsGrid.appendChild(card);
+    });
+    // AtoZラベル
+    const teamsSection = document.getElementById('teams');
+    if (teamsSection) {
+      const atoz = document.createElement('p');
+      atoz.className = 'teams-note';
+      atoz.textContent = '(サークル名 A to Z)';
+      teamsSection.querySelector('.section-inner').appendChild(atoz);
+    }
   }
 
   // Q&A
@@ -373,22 +389,30 @@
   // JUDGES（審査員）
   const judgesGrid = document.getElementById('judges-grid');
   const judges = data.judges || [];
-  judges.forEach((judge, i) => {
-    const card = document.createElement('div');
-    card.className = 'judge-card reveal';
-    // 画像：存在すれば表示、なければイニシャル
-    const initial = judge.name.charAt(0);
-    card.innerHTML = `
-      <div class="judge-img-wrap">
-        <img class="judge-img" src="${judge.image}" alt="${judge.name}"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-        <div class="judge-img-placeholder" style="display:none">${initial}</div>
-      </div>
-      <div class="judge-name">${judge.name}</div>
-    `;
-    card.addEventListener('click', () => openJudgePopup(judge));
-    judgesGrid.appendChild(card);
-  });
+  if (judges.length === 0) {
+    judgesGrid.innerHTML = `
+      <div class="coming-soon-box reveal">
+        <div class="coming-soon-text">COMING SOON</div>
+        <div class="coming-soon-sub">審査員は決まり次第発表いたします</div>
+      </div>`;
+  } else {
+    judges.forEach((judge, i) => {
+      const card = document.createElement('div');
+      card.className = 'judge-card reveal';
+      // 画像：存在すれば表示、なければイニシャル
+      const initial = judge.name.charAt(0);
+      card.innerHTML = `
+        <div class="judge-img-wrap">
+          <img class="judge-img" src="${judge.image}" alt="${judge.name}"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="judge-img-placeholder" style="display:none">${initial}</div>
+        </div>
+        <div class="judge-name">${judge.name}</div>
+      `;
+      card.addEventListener('click', () => openJudgePopup(judge));
+      judgesGrid.appendChild(card);
+    });
+  }
 
   // ポップアップ処理
   const overlay = document.getElementById('judge-popup-overlay');
@@ -486,5 +510,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
