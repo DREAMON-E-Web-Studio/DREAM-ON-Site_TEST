@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 51
+   VERSION   : 52
 ============================================ */
 (async () => {
   let data;
@@ -87,7 +87,7 @@
   document.getElementById('hero-vol-badge').textContent = `Vol.${event.vol} — ${event.anniversary}`;
   document.getElementById('hero-info').innerHTML = `
     <div class="event-date">${event.date}</div>
-    <div class="event-venue">@ ${event.venue}\n${event.open}\n${event.start}</div>
+    <div class="event-venue">@ ${event.venue}</div>
   `;
 
   /* ============================================================
@@ -106,9 +106,6 @@
   }
   phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
   if (phase === '1') {
-    if (event.date) {
-      phaseHTML += `<p class="phase-event-date">開催日：${event.date}</p>`;
-    }
     if (data.entry_open_date) {
       phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
     }
@@ -120,7 +117,9 @@
     phaseHTML += `<a href="#teams" class="btn btn-primary" style="margin:12px auto 4px;display:inline-flex;">出場サークルを見る</a>`;
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
-  phaseHTML += `<div class="phase-note">${pt.note}</div>`;
+  if (phase !== '1') {
+    phaseHTML += `<div class="phase-note">${pt.note}</div>`;
+  }
   phaseEl.innerHTML = phaseHTML;
 
   // ボタン出し分け
@@ -316,7 +315,7 @@
   // TIMETABLE
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
-    <div class="tt-venue">${event.venue}\n${event.open}\n${event.start}</div>
+    <div class="tt-venue">${event.venue}</div>
   `;
   const ttList = document.getElementById('timetable-list');
   if (!timetable || timetable.length === 0) {
@@ -510,5 +509,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 51
+   VERSION   : 52
 ============================================ */
