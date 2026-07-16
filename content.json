@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "49"
+    "version": "50"
   },
   "site": {
     "title": "DREAM ON!",
@@ -48,10 +48,40 @@
     "body": "今回、新しい試みとして、通常の一般枠に加えて「U-18 アカデミーブロック」を設けることになりました！\n\n小学生、中学生、各種ダンススクールで結成されたチームなど、メンバー全員が18歳以下（18歳含む高校生以下）で構成されたチームのみが出演できるコーナーになります。\n\nこの「U-18 アカデミーブロック」には、韓国事務所やオーディションプログラムの関係者などが、視察やスカウトにいらっしゃいます！\n是非、懇親のカバーダンスを見てもらいつつ、夢を叶えるチャンスを掴んでください！\n\n（U-18 アカデミーブロック出場でも、1曲入魂や基本ルール、参加費等は通常DREAM ON!と同じ共通ルールとなります）"
   },
   "teams": [
-    "出演チームは近日公開予定"
+    "&CREW",
+    "98s",
+    "ALL 3RD PROJECT",
+    "ALUPIZ",
+    "Apurple",
+    "ATwentieZ",
+    "CHONWALY",
+    "euool",
+    "ILLIL",
+    "Lillie",
+    "LØV3 MΞ 1$T",
+    "Muffin",
+    "NALGE",
+    "P♡NY⭐︎N",
+    "RadIS:SUE",
+    "RE:117",
+    "RUDE!部",
+    "TVICE",
+    "unknown",
+    "VAPOR1",
+    "こぐまTOKYO",
+    "でこぼこフレンズ",
+    "なびなび⭐︎れもね〜ど",
+    "ウェイ舞",
+    "永遠時代",
+    "바보라떼"
   ],
   "teams_u18": [
-    "出演チームは近日公開予定"
+    "ACOACO",
+    "BraveRush",
+    "Rico",
+    "T-city crew",
+    "T-city crew YOUTH",
+    "ViViAN"
   ],
   "timetable": [],
   "qa_categories": [
@@ -115,7 +145,7 @@
     "images/hero6.jpeg",
     "images/hero7.jpeg"
   ],
-  "phase": "3",
+  "phase": "4",
   "entry_open_date": "2026-06-15T12:00:00",
   "phase_text": {
     "1": {
