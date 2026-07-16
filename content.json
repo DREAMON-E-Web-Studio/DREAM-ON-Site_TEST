@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "58"
+    "version": "59"
   },
   "site": {
     "title": "DREAM ON!",
@@ -26,8 +26,8 @@
     "date": "2026.08.23（Sun）",
     "venue": "浅草花劇場",
     "venue_url": "https://www.hanayashiki-kagekijo.com/",
-    "open": "OPEN 15:30",
-    "start": "START 16:00",
+    "open": "OPEN 16:00",
+    "start": "START 17:00",
     "ticket_price": "前売り 3,000円",
     "ticket_note": "1ドリンク別",
     "message": "15年・30回の歴史を積み重ねてきたDREAM ON!が、新たなステージへ踏み出します。\n\n新会場は浅草花やしき内の「浅草花劇場」。\nキャパシティは小さくなっても、その分だけアーティストと観客の距離はぐっと近くなります。\n\nステージの熱量そのままに、今まで以上に一体感のある空間で、K-POPカバーダンスの祭典をお届けします。",
