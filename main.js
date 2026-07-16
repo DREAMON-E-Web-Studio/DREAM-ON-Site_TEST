@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 50
+   VERSION   : 51
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -168,8 +168,7 @@
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   } else if (phase === '4') {
     ctaHTML = `
-      <a href="#teams" class="btn btn-primary">出演チームを見る</a>
-      <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+      <a href="#teams" class="btn btn-primary">出演チームを見る</a>`;
   } else if (phase === '3') {
     // フェーズ3：CTAなし
     ctaHTML = '';
@@ -390,44 +389,14 @@
     });
 
   } else if (phase === '4') {
-    // フェーズ4：出演者発表＋開催日カウントダウン
-    let announcedImg = '';
-    if (data.announced_image) {
-      announcedImg = `<img src="${data.announced_image}" alt="出演者発表" class="entry-announced-img" />`;
-    }
-    let eventCdHtml = '';
-    if (data.event_datetime) {
-      eventCdHtml = `
-        <p class="entry-event-cd-label">イベント開催まで</p>
-        <div class="entry-countdown" id="entry-event-countdown"></div>`;
-    }
-    entryContent.innerHTML = `
-      ${announcedImg}
-      ${eventCdHtml}
-      <p class="entry-note" style="white-space:pre-line;margin-top:24px">${entryNote}</p>
-      <a href="#teams" class="btn btn-primary btn-large" style="margin-top:24px">出演チームを見る</a>
-    `;
-    // 開催日カウントダウン
-    if (data.event_datetime) {
-      const target = new Date(data.event_datetime).getTime();
-      const ecEl = document.getElementById('entry-event-countdown');
-      const update = () => {
-        const diff = target - Date.now();
-        if (diff <= 0) { ecEl.innerHTML = `<p class="entry-cd-open">本日開催！</p>`; return; }
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        ecEl.innerHTML = `
-          <div class="entry-cd-wrap">
-            <div class="entry-cd-box"><span class="entry-cd-num">${d}</span><span class="entry-cd-unit">DAYS</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(h).padStart(2,'0')}</span><span class="entry-cd-unit">HOUR</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(m).padStart(2,'0')}</span><span class="entry-cd-unit">MIN</span></div>
-            <div class="entry-cd-box"><span class="entry-cd-num">${String(s).padStart(2,'0')}</span><span class="entry-cd-unit">SEC</span></div>
-          </div>`;
-      };
-      update(); setInterval(update, 1000);
-    }
+    // フェーズ4：ENTRYセクション自体を非表示（本番までのカウントダウンはヒーローに既存）
+    const entrySection4 = document.getElementById('entry');
+    if (entrySection4) entrySection4.style.display = 'none';
+    document.querySelectorAll('#nav-list a').forEach(a => {
+      if (a.getAttribute('href') === '#entry') {
+        a.parentElement.style.display = 'none';
+      }
+    });
   }
 
   /* ============================================================
@@ -535,5 +504,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 50
+   VERSION   : 51
 ============================================ */
