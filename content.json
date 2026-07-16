@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "56"
+    "version": "58"
   },
   "site": {
     "title": "DREAM ON!",
@@ -224,6 +224,10 @@
       "href": "#about"
     },
     {
+      "label": "TEAMS",
+      "href": "#teams"
+    },
+    {
       "label": "TIMETABLE",
       "href": "#timetable"
     },
@@ -234,6 +238,10 @@
     {
       "label": "Q&A",
       "href": "#qa"
+    },
+    {
+      "label": "MOVIE",
+      "href": "#video"
     }
   ],
   "hero_images": [

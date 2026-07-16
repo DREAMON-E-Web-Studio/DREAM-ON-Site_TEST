@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 56
+   VERSION   : 58
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -221,18 +221,6 @@
 
   document.getElementById('about-lead').innerHTML = about.lead.replace(/\n/g, '<br>');
   document.getElementById('about-video-iframe').src = event.youtube_embed;
-
-  const featuresGrid = document.getElementById('features-grid');
-  about.features.forEach(f => {
-    const card = document.createElement('div');
-    card.className = 'feature-card reveal';
-    card.innerHTML = `
-      <div class="feature-icon">${f.icon}</div>
-      <div class="feature-title">${f.title}</div>
-      <div class="feature-desc">${f.desc}</div>
-    `;
-    featuresGrid.appendChild(card);
-  });
 
   // U-18 アカデミーブロック（出演チーム一覧セクション内）
   if (data.u18) {
@@ -508,5 +496,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 56
+   VERSION   : 58
 ============================================ */
