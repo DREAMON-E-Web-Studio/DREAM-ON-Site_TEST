@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -20,7 +20,7 @@
     return;
   }
 
-  const { site, event, about, teams, timetable, qa } = data;
+  const { site, event, about, teams, timetable } = data;
 
   /* ---------- ページタイトル ---------- */
   document.title = `${site.title} Vol.${event.vol} – ${site.subtitle}`;
@@ -170,9 +170,12 @@
     ctaHTML = `
       <a href="#teams" class="btn btn-primary">出演チームを見る</a>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
+  } else if (phase === '3') {
+    // フェーズ3：CTAなし
+    ctaHTML = '';
   } else {
     ctaHTML = `
-      <span class="btn btn-disabled">${phase === '1' ? 'エントリー開始までお待ちください' : 'エントリー受付は終了しました'}</span>
+      <span class="btn btn-disabled">エントリー開始までお待ちください</span>
       <a href="#about" class="btn btn-outline">詳しく見る</a>`;
   }
   ctaEl.innerHTML = ctaHTML;
@@ -213,9 +216,8 @@
     else setInterval(updateCountdown, 60000); // Daysのみは1分ごとに更新
   }
 
-  document.getElementById('about-lead').textContent = about.lead;
+  document.getElementById('about-lead').innerHTML = about.lead.replace(/\n/g, '<br>');
   document.getElementById('about-video-iframe').src = event.youtube_embed;
-  document.getElementById('about-body').textContent = about.body;
 
   const featuresGrid = document.getElementById('features-grid');
   about.features.forEach(f => {
@@ -229,12 +231,12 @@
     featuresGrid.appendChild(card);
   });
 
-  // U-18 アカデミーブロック
-  if (about.u18) {
+  // U-18 アカデミーブロック（出演チーム一覧セクション内）
+  if (data.u18) {
     const u18El = document.getElementById('u18-section');
     if (u18El) {
-      document.getElementById('u18-title').textContent = about.u18.title;
-      document.getElementById('u18-body').textContent = about.u18.body;
+      document.getElementById('u18-title').textContent = data.u18.title;
+      document.getElementById('u18-body').textContent = data.u18.body;
     }
   }
 
@@ -247,19 +249,27 @@
   `;
 
   const ttList = document.getElementById('timetable-list');
-  timetable.forEach(row => {
-    const isDJ = row.act.includes('DJ') || row.act.includes('OPEN') || row.act.includes('START');
-    const div = document.createElement('div');
-    div.className = `tt-row reveal${isDJ ? ' dj' : ''}`;
-    div.innerHTML = `
-      <div class="tt-time">${row.time}</div>
-      <div class="tt-act">${row.act}</div>
-    `;
-    ttList.appendChild(div);
-  });
+  if (!timetable || timetable.length === 0) {
+    ttList.innerHTML = `
+      <div class="coming-soon-box reveal">
+        <div class="coming-soon-text">COMING SOON</div>
+        <div class="coming-soon-sub">タイムテーブルは決まり次第発表いたします</div>
+      </div>`;
+  } else {
+    timetable.forEach(row => {
+      const isDJ = row.act.includes('DJ') || row.act.includes('OPEN') || row.act.includes('START');
+      const div = document.createElement('div');
+      div.className = `tt-row reveal${isDJ ? ' dj' : ''}`;
+      div.innerHTML = `
+        <div class="tt-time">${row.time}</div>
+        <div class="tt-act">${row.act}</div>
+      `;
+      ttList.appendChild(div);
+    });
+  }
 
   /* ============================================================
-     TEAMS
+     TEAMS（通常ブロック／U-18ブロック）
   ============================================================ */
   const teamsGrid = document.getElementById('teams-grid');
   teams.forEach(name => {
@@ -267,6 +277,15 @@
     card.className = 'team-card reveal';
     card.innerHTML = `<span>${name}</span>`;
     teamsGrid.appendChild(card);
+  });
+
+  const teamsU18Grid = document.getElementById('teams-u18-grid');
+  const teamsU18 = data.teams_u18 || [];
+  teamsU18.forEach(name => {
+    const card = document.createElement('div');
+    card.className = 'team-card reveal';
+    card.innerHTML = `<span>${name}</span>`;
+    teamsU18Grid.appendChild(card);
   });
 
   /* ============================================================
@@ -360,13 +379,15 @@
     }
 
   } else if (phase === '3') {
-    // フェーズ3：締切・審査中
-    entryContent.innerHTML = `
-      <div class="entry-phase-msg entry-phase-closed">
-        <p class="entry-lead">${entryHeadline}</p>
-        <p class="entry-note" style="white-space:pre-line">${entryNote}</p>
-      </div>
-    `;
+    // フェーズ3：ENTRYセクション自体を非表示
+    const entrySection = document.getElementById('entry');
+    if (entrySection) entrySection.style.display = 'none';
+    // NAVのENTRYリンクも非表示
+    document.querySelectorAll('#nav-list a').forEach(a => {
+      if (a.getAttribute('href') === '#entry') {
+        a.parentElement.style.display = 'none';
+      }
+    });
 
   } else if (phase === '4') {
     // フェーズ4：出演者発表＋開催日カウントダウン
@@ -410,28 +431,46 @@
   }
 
   /* ============================================================
-     Q&A アコーディオン
+     Q&A アコーディオン（カテゴリ対応）
   ============================================================ */
-  const qaList = document.getElementById('qa-list');
-  qa.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'qa-item reveal';
-    div.innerHTML = `
-      <button class="qa-question" aria-expanded="false" aria-controls="qa-answer-${i}">
-        <span class="qa-q-icon">Q</span>
-        <span>${item.q}</span>
-        <span class="qa-chevron">▼</span>
-      </button>
-      <div class="qa-answer" id="qa-answer-${i}" role="region">
-        <div class="qa-answer-inner">${item.a}</div>
-      </div>
-    `;
-    const btn = div.querySelector('.qa-question');
-    btn.addEventListener('click', () => {
-      const isOpen = div.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
+  const qaCategoriesEl = document.getElementById('qa-categories');
+  const qaCategories = data.qa_categories || [];
+  let qaGlobalIndex = 0;
+  qaCategories.forEach(cat => {
+    const catDiv = document.createElement('div');
+    catDiv.className = 'qa-category';
+    const catTitle = document.createElement('h3');
+    catTitle.className = 'qa-category-title';
+    catTitle.textContent = cat.title;
+    catDiv.appendChild(catTitle);
+
+    const listDiv = document.createElement('div');
+    listDiv.className = 'qa-list';
+
+    cat.items.forEach(item => {
+      const i = qaGlobalIndex++;
+      const div = document.createElement('div');
+      div.className = 'qa-item reveal';
+      div.innerHTML = `
+        <button class="qa-question" aria-expanded="false" aria-controls="qa-answer-${i}">
+          <span class="qa-q-icon">Q</span>
+          <span>${item.q}</span>
+          <span class="qa-chevron">▼</span>
+        </button>
+        <div class="qa-answer" id="qa-answer-${i}" role="region">
+          <div class="qa-answer-inner">${item.a}</div>
+        </div>
+      `;
+      const btn = div.querySelector('.qa-question');
+      btn.addEventListener('click', () => {
+        const isOpen = div.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
+      });
+      listDiv.appendChild(div);
     });
-    qaList.appendChild(div);
+
+    catDiv.appendChild(listDiv);
+    qaCategoriesEl.appendChild(catDiv);
   });
 
   /* ============================================================
@@ -496,5 +535,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */

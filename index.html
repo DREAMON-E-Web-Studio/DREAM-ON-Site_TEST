@@ -1,7 +1,7 @@
 <!-- ============================================
      FILE TYPE : HTML
      SITE      : DREAM ON! (ドリオン)
-     VERSION   : 48
+     VERSION   : 49
 ============================================ -->
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=48" />
+  <link rel="stylesheet" href="style.css?v=49" />
 </head>
 <body>
 
@@ -69,28 +69,34 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen title="DREAM ON! ダイジェスト映像"></iframe>
       </div>
-      <p class="about-body" id="about-body"></p>
-      <div class="u18-section reveal" id="u18-section">
-        <h3 class="u18-title" id="u18-title"></h3>
-        <p class="u18-body" id="u18-body"></p>
-      </div>
       <div class="features-grid" id="features-grid"></div>
     </div>
   </section>
 
-  <section class="section section-alt" id="timetable">
+  <section class="section section-alt" id="teams">
+    <div class="section-inner">
+      <h2 class="section-title">出演チーム一覧</h2>
+
+      <h3 class="teams-block-title">通常ブロック 出演チーム</h3>
+      <div class="teams-grid" id="teams-grid"></div>
+      <p class="teams-note">(a to z)</p>
+
+      <h3 class="teams-block-title teams-block-title--u18">U-18 アカデミーブロック 出演チーム</h3>
+      <div class="teams-grid" id="teams-u18-grid"></div>
+      <p class="teams-note">(a to z)</p>
+
+      <div class="u18-section reveal" id="u18-section">
+        <h3 class="u18-title" id="u18-title"></h3>
+        <p class="u18-body" id="u18-body"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="timetable">
     <div class="section-inner">
       <h2 class="section-title">TIMETABLE</h2>
       <div class="timetable-header" id="timetable-header"></div>
       <div class="timetable-list" id="timetable-list"></div>
-    </div>
-  </section>
-
-  <section class="section" id="teams">
-    <div class="section-inner">
-      <h2 class="section-title">出演チーム</h2>
-      <div class="teams-grid" id="teams-grid"></div>
-      <p class="teams-note">(a to z)</p>
     </div>
   </section>
 
@@ -106,7 +112,7 @@
   <section class="section" id="qa">
     <div class="section-inner">
       <h2 class="section-title">Q&A</h2>
-      <div class="qa-list" id="qa-list"></div>
+      <div class="qa-categories" id="qa-categories"></div>
     </div>
   </section>
 
@@ -127,11 +133,11 @@
     </div>
   </footer>
 
-  <script src="main.js?v=48"></script>
+  <script src="main.js?v=49"></script>
 </body>
 </html>
 <!-- ============================================
      FILE TYPE : HTML
      SITE      : DREAM ON! (ドリオン)
-     VERSION   : 48
+     VERSION   : 49
 ============================================ -->

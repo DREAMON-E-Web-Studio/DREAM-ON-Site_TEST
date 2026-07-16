@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 /* =============================================
    ============================================= */
@@ -184,11 +184,33 @@ ul { list-style: none; }
 .tt-row.dj .tt-act { color: var(--text-sub); font-style: italic; }
 
 /* ---------- Teams ---------- */
+.teams-block-title { font-size: 1rem; font-weight: 900; text-align: center; margin: 28px 0 14px; color: var(--text); }
+.teams-block-title:first-of-type { margin-top: 0; }
+.teams-block-title--u18 { color: var(--accent); }
 .teams-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; justify-items: center; }
 .teams-grid:has(.team-card:only-child) { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
 .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; transition: transform 0.2s, border-color 0.2s; }
 .team-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 4px 16px rgba(233,30,140,0.2); }
-.teams-note { text-align: center; font-size: 0.75rem; color: var(--text-sub); }
+.teams-note { text-align: center; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 8px; }
+
+/* ---------- Coming Soon ---------- */
+.coming-soon-box {
+  position: relative;
+  padding: 48px 24px;
+  text-align: center;
+  border: 1px solid rgba(233,30,140,0.3);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(124,58,237,0.08));
+  overflow: hidden;
+}
+.coming-soon-text {
+  font-family: var(--font-en);
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  letter-spacing: 0.15em;
+  background: var(--accent-grd);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.coming-soon-sub { margin-top: 10px; font-size: 0.82rem; color: var(--text-sub); letter-spacing: 0.05em; }
 
 /* ---------- Entry ---------- */
 .entry-section { text-align: center; }
@@ -212,6 +234,9 @@ ul { list-style: none; }
 .entry-cd-open { font-weight: 900; font-size: 1.2rem; color: var(--accent); margin: 12px 0; }
 
 /* ---------- Q&A ---------- */
+.qa-category { margin-bottom: 36px; }
+.qa-category:last-child { margin-bottom: 0; }
+.qa-category-title { font-size: 1rem; font-weight: 900; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 .qa-list { display: flex; flex-direction: column; gap: 12px; }
 .qa-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .qa-question { width: 100%; background: none; border: none; padding: 18px 20px; text-align: left; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; font-family: var(--font-jp); font-size: 0.9rem; font-weight: 700; color: var(--text); transition: background 0.2s; }
@@ -276,7 +301,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 48
+   VERSION   : 49
 ============================================ */
 
 /* ---------- U-18 アカデミーブロック ---------- */
