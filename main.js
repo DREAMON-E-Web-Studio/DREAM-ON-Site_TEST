@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 59
+   VERSION   : 60
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -139,9 +139,7 @@
 
   // フェーズ表示（見出し＋補足＋必要ならカウントダウン）
   let phaseHTML = '';
-  if (phase !== '4') {
-    phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
-  }
+
   if (phase === '1') {
     // 開催日テキスト表示
     if (event.date) {
@@ -159,8 +157,11 @@
   }
   if (phase === '4' && data.event_datetime) {
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
-    phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
   }
+
+  // 見出し（カウントダウンの後に統一）
+  phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
 
@@ -496,5 +497,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 59
+   VERSION   : 60
 ============================================ */
