@@ -196,7 +196,6 @@
   if (cdTarget) {
     const target = new Date(cdTarget).getTime();
     const cdEl = document.getElementById('phase-countdown');
-    const daysOnly = (phase === '1'); // フェーズ1はDaysのみ
     const updateCountdown = () => {
       const diff = target - Date.now();
       if (diff <= 0) {
@@ -208,20 +207,15 @@
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      if (daysOnly) {
-        cdEl.innerHTML = `<div class="cd-box cd-box-large"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>`;
-      } else {
-        cdEl.innerHTML = `
-          <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
-          <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
-          <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
-          <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
-        `;
-      }
+      cdEl.innerHTML = `
+        <div class="cd-box"><span class="cd-num">${d}</span><span class="cd-unit">DAYS</span></div>
+        <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">HOUR</span></div>
+        <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">MIN</span></div>
+        <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">SEC</span></div>
+      `;
     };
     updateCountdown();
-    if (!daysOnly) setInterval(updateCountdown, 1000);
-    else setInterval(updateCountdown, 60000); // Daysのみは1分ごとに更新
+    setInterval(updateCountdown, 1000);
   }
 
   document.getElementById('about-lead').innerHTML = about.lead.replace(/\n/g, '<br>');
