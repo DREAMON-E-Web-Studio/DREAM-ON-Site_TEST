@@ -145,9 +145,11 @@
     if (event.date) {
       phaseHTML += `<p class="phase-event-date">開催日：${event.date}</p>`;
     }
+    // 見出し（カウントダウンの上に配置）
+    phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
     // エントリーまでDaysカウントダウン
     if (data.entry_open_date) {
-      phaseHTML += `<p class="phase-cd-label">エントリー開始まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+      phaseHTML += `<div class="phase-countdown" id="phase-countdown"></div>`;
     }
   }
   if (phase === '2' && data.entry_close_date) {
@@ -159,8 +161,10 @@
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
 
-  // 見出し（カウントダウンの後に統一）
-  phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+  // 見出し（カウントダウンの後に統一。フェーズ1はカウントダウンの上に配置済み）
+  if (phase !== '1') {
+    phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+  }
 
   phaseHTML += `<div class="phase-note">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
