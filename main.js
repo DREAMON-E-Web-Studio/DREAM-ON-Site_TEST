@@ -394,11 +394,14 @@
       }
     });
   } else if (phase === '0') {
-    // フェーズ0：公開前・次回未定のためENTRYセクション自体を非表示
-    const entrySection0 = document.getElementById('entry');
-    if (entrySection0) entrySection0.style.display = 'none';
+    // フェーズ0：公開前・次回未定のためENTRY・出演者チーム・タイムテーブルを全て非表示
+    ['entry', 'teams', 'timetable'].forEach(id => {
+      const section = document.getElementById(id);
+      if (section) section.style.display = 'none';
+    });
     document.querySelectorAll('#nav-list a').forEach(a => {
-      if (a.getAttribute('href') === '#entry') {
+      const href = a.getAttribute('href');
+      if (href === '#entry' || href === '#teams' || href === '#timetable') {
         a.parentElement.style.display = 'none';
       }
     });
