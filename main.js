@@ -471,6 +471,12 @@
     footerSocial.appendChild(a);
   });
 
+  const footerBuildEl = document.getElementById('footer-build');
+  if (footerBuildEl) {
+    const buildVersion = (data._meta && data._meta.version) || '?';
+    footerBuildEl.textContent = `v${buildVersion} / phase ${phase}`;
+  }
+
   /* ============================================================
      SCROLL REVEAL (IntersectionObserver)
   ============================================================ */
