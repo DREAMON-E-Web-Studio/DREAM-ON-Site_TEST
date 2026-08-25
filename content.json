@@ -256,6 +256,12 @@
   "phase": "1",
   "entry_open_date": "2026-12-01T18:00:00",
   "phase_text": {
+    "0": {
+      "headline": "COMING SOON",
+      "note": "",
+      "entry_headline": "",
+      "entry_note": ""
+    },
     "1": {
       "headline": "エントリー開始まで",
       "note": "開始までしばらくお待ちください。\n開始日時はSNSでお知らせします。",

@@ -123,16 +123,17 @@
   document.getElementById('hero-vol-badge').textContent =
     `Vol.${event.vol} — ${event.anniversary}`;
 
-  document.getElementById('hero-info').innerHTML = `
-    <div class="event-date">${event.date}</div>
-    <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
-  `;
-
   /* ============================================================
      PHASE（エントリー状態の切り替え）
   ============================================================ */
   const phase = data.phase || '2';
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
+
+  // フェーズ0（公開前・次回未定）では開催日・会場は非表示
+  document.getElementById('hero-info').innerHTML = (phase === '0') ? '' : `
+    <div class="event-date">${event.date}</div>
+    <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
+  `;
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
   const entryFormUrl = data.entry_form_url || 'mailto:k-dancefes@shibuya-o.com';
@@ -140,6 +141,10 @@
   // フェーズ表示（見出し＋補足＋必要ならカウントダウン）
   let phaseHTML = '';
 
+  if (phase === '0') {
+    // フェーズ0：開催日・会場・エントリー日・カウントダウンは全て非表示、COMING SOONのみ
+    phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
+  }
   if (phase === '1') {
     // 開催日テキスト表示
     if (event.date) {
@@ -161,8 +166,8 @@
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
 
-  // 見出し（カウントダウンの後に統一。フェーズ1はカウントダウンの上に配置済み）
-  if (phase !== '1') {
+  // 見出し（カウントダウンの後に統一。フェーズ0/1はカウントダウンの上に配置済み）
+  if (phase !== '1' && phase !== '0') {
     phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
   }
 
@@ -383,6 +388,15 @@
     // フェーズ4：ENTRYセクション自体を非表示（本番までのカウントダウンはヒーローに既存）
     const entrySection4 = document.getElementById('entry');
     if (entrySection4) entrySection4.style.display = 'none';
+    document.querySelectorAll('#nav-list a').forEach(a => {
+      if (a.getAttribute('href') === '#entry') {
+        a.parentElement.style.display = 'none';
+      }
+    });
+  } else if (phase === '0') {
+    // フェーズ0：公開前・次回未定のためENTRYセクション自体を非表示
+    const entrySection0 = document.getElementById('entry');
+    if (entrySection0) entrySection0.style.display = 'none';
     document.querySelectorAll('#nav-list a').forEach(a => {
       if (a.getAttribute('href') === '#entry') {
         a.parentElement.style.display = 'none';
