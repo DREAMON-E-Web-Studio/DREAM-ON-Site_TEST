@@ -114,9 +114,7 @@
     phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   if (phase === '4' && data.event_datetime) {
-    phaseHTML += teams && teams.length > 0
-      ? `<a href="#teams" class="btn btn-primary" style="margin:12px auto 4px;display:inline-flex;">出場サークルを見る</a>`
-      : `<span class="btn btn-disabled" style="margin:12px auto 4px;display:inline-flex;">出場サークル COMING SOON</span>`;
+    phaseHTML += `<a href="#teams" class="btn btn-primary" style="margin:12px auto 4px;display:inline-flex;">出場サークルを見る</a>`;
     phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
   if (phase !== '1') {
