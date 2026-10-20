@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "67"
+    "version": "68"
   },
   "site": {
     "title": "DREAM ON!",
@@ -254,7 +254,7 @@
     "images/hero7.jpeg"
   ],
   "phase": "0",
-  "entry_open_date": "2026-12-01T18:00:00",
+  "entry_open_date": "2026-11-13T00:00:00+09:00",
   "phase_text": {
     "0": {
       "headline": "COMING SOON",

@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 53
+   VERSION   : 59
 ============================================ */
 (async () => {
   let data;
@@ -94,6 +94,8 @@
      PHASE（フェーズ切り替え）
   ============================================================ */
   const phase = data.phase || '2';
+  // 発表データを用意しても、フェーズ4になるまでは画面に公開しない。
+  const announcementPublished = phase === '4';
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
@@ -113,9 +115,12 @@
   if (phase === '2' && data.entry_close_date) {
     phaseHTML += `<p class="phase-cd-label">エントリー締切まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
   }
-  if (phase === '4' && data.event_datetime) {
+  if (phase === '4') {
     phaseHTML += `<a href="#teams" class="btn btn-primary" style="margin:12px auto 4px;display:inline-flex;">出場サークルを見る</a>`;
-    phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+    phaseHTML += `<a href="#judges" class="btn btn-outline" style="margin:12px auto 4px;display:inline-flex;">審査員を見る</a>`;
+    if (data.event_datetime) {
+      phaseHTML += `<p class="phase-cd-label">本番まで</p><div class="phase-countdown" id="phase-countdown"></div>`;
+    }
   }
   if (phase !== '1') {
     phaseHTML += `<div class="phase-note">${pt.note}</div>`;
@@ -336,8 +341,8 @@
 
   // TEAMS
   const teamsGrid = document.getElementById('teams-grid');
-  teamsGrid.classList.toggle('teams-grid--pending', !teams || teams.length === 0);
-  if (!teams || teams.length === 0) {
+  teamsGrid.classList.toggle('teams-grid--pending', !announcementPublished || !teams || teams.length === 0);
+  if (!announcementPublished || !teams || teams.length === 0) {
     teamsGrid.innerHTML = `
       <div class="coming-soon-box reveal">
         <div class="coming-soon-text">COMING SOON</div>
@@ -388,7 +393,7 @@
 
   // JUDGES（審査員）
   const judgesGrid = document.getElementById('judges-grid');
-  const judges = data.judges || [];
+  const judges = announcementPublished ? (data.judges || []) : [];
   if (judges.length === 0) {
     judgesGrid.innerHTML = `
       <div class="coming-soon-box reveal">
@@ -440,7 +445,7 @@
   if (phase === '4') {
     const main = document.getElementById('main-content');
     if (main) {
-      const order = ['teams', 'timetable', 'judges', 'rules', 'about', 'qa'];
+      const order = ['teams', 'judges', 'timetable', 'rules', 'about', 'qa'];
       order.forEach(id => {
         const el = document.getElementById(id);
         if (el) main.appendChild(el);
@@ -451,8 +456,8 @@
     navList.innerHTML = '';
     const phase4Nav = [
       { label: 'TEAMS', href: '#teams' },
-      { label: 'TIMETABLE', href: '#timetable' },
       { label: 'JUDGES', href: '#judges' },
+      { label: 'TIMETABLE', href: '#timetable' },
       { label: 'RULES', href: '#rules' },
       { label: 'ABOUT', href: '#about' },
       { label: 'Q&A', href: '#qa' },
@@ -516,5 +521,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 53
+   VERSION   : 59
 ============================================ */
