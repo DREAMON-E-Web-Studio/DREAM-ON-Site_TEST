@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 59
+   VERSION   : 60
 ============================================ */
 (async () => {
   let data;
@@ -341,8 +341,23 @@
 
   // TEAMS
   const teamsGrid = document.getElementById('teams-grid');
-  teamsGrid.classList.toggle('teams-grid--pending', !announcementPublished || !teams || teams.length === 0);
-  if (!announcementPublished || !teams || teams.length === 0) {
+  const hasTeamsPoster = announcementPublished && !!data.teams_poster;
+  teamsGrid.classList.toggle('teams-grid--pending', hasTeamsPoster || !announcementPublished || !teams || teams.length === 0);
+  if (hasTeamsPoster) {
+    const posterButton = document.createElement('button');
+    posterButton.type = 'button';
+    posterButton.className = 'announcement-poster reveal';
+    posterButton.setAttribute('aria-label', '出場サークルの告知画像を拡大');
+    const poster = document.createElement('img');
+    poster.src = data.teams_poster;
+    poster.alt = `DREAM ONE! Vol.${event.vol} 出場サークル：${(teams || []).join('、')}`;
+    poster.loading = 'lazy';
+    posterButton.appendChild(poster);
+    posterButton.addEventListener('click', () => openJudgePopup({
+      name: '出場サークル', image: data.teams_poster, profile: ''
+    }));
+    teamsGrid.appendChild(posterButton);
+  } else if (!announcementPublished || !teams || teams.length === 0) {
     teamsGrid.innerHTML = `
       <div class="coming-soon-box reveal">
         <div class="coming-soon-text">COMING SOON</div>
@@ -404,6 +419,9 @@
     judges.forEach((judge, i) => {
       const card = document.createElement('div');
       card.className = 'judge-card reveal';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `${judge.name}の紹介を見る`);
       // 画像：存在すれば表示、なければイニシャル
       const initial = judge.name.charAt(0);
       card.innerHTML = `
@@ -415,6 +433,12 @@
         <div class="judge-name">${judge.name}</div>
       `;
       card.addEventListener('click', () => openJudgePopup(judge));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openJudgePopup(judge);
+        }
+      });
       judgesGrid.appendChild(card);
     });
   }
@@ -424,11 +448,14 @@
   const popupClose = document.getElementById('judge-popup-close');
 
   function openJudgePopup(judge) {
+    document.getElementById('judge-popup-img').style.display = 'block';
     document.getElementById('judge-popup-img').src = judge.image;
     document.getElementById('judge-popup-img').alt = judge.name;
     document.getElementById('judge-popup-img').onerror = function() { this.style.display='none'; };
     document.getElementById('judge-popup-name').textContent = judge.name;
-    document.getElementById('judge-popup-profile').textContent = judge.profile;
+    // 告知画像内の紹介文をそのまま表示。テキストの重複掲載はしない。
+    document.getElementById('judge-popup-profile').textContent = '';
+    document.getElementById('judge-popup-original').href = judge.image;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -440,6 +467,9 @@
 
   popupClose.addEventListener('click', closeJudgePopup);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeJudgePopup(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeJudgePopup();
+  });
 
   // フェーズ4：セクション順序並べ替え＋NAVリンク更新
   if (phase === '4') {
@@ -521,5 +551,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 59
+   VERSION   : 60
 ============================================ */
