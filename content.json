@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "68"
+    "version": "69"
   },
   "site": {
     "title": "DREAM ON!",
@@ -253,7 +253,7 @@
     "images/hero6.jpeg",
     "images/hero7.jpeg"
   ],
-  "phase": "0",
+  "phase": "1",
   "entry_open_date": "2026-11-13T00:00:00+09:00",
   "phase_text": {
     "0": {
@@ -264,9 +264,9 @@
     },
     "1": {
       "headline": "エントリー開始まで",
-      "note": "開始までしばらくお待ちください。\n開始日時はSNSでお知らせします。",
+      "note": "2026年11月13日（金）0:00よりエントリー受付開始（日本時間）",
       "entry_headline": "エントリー受付開始まで、今しばらくお待ちください。",
-      "entry_note": "開始日時はSNS（X / Instagram）にてお知らせします。\nお問い合わせもSNSよりDMにてご連絡ください。"
+      "entry_note": "2026年11月13日（金）0:00よりエントリー受付開始（日本時間）\nお問い合わせはSNSよりDMにてご連絡ください。"
     },
     "2": {
       "headline": "エントリー受付中！",
