@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 74
+   VERSION   : 75
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -132,7 +132,7 @@
   // フェーズ0（公開前・次回未定）では開催日・会場は非表示
   document.getElementById('hero-info').innerHTML = (phase === '0') ? '' : `
     <div class="event-date">${event.date}</div>
-    <div class="event-venue">@ ${event.venue} / ${event.open} / ${event.start}</div>
+    <div class="event-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${event.open}</span><span class="event-info-item">${event.start}</span></div>
   `;
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
@@ -236,7 +236,7 @@
   ============================================================ */
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
-    <div class="tt-venue">${event.venue} / ${event.open} – ${event.start}</div>
+    <div class="tt-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${event.open}</span><span class="event-info-item">${event.start}</span></div>
   `;
 
   const ttList = document.getElementById('timetable-list');
@@ -525,5 +525,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 74
+   VERSION   : 75
 ============================================ */

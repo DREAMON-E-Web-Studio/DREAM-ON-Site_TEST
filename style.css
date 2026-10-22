@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 72
+   VERSION   : 75
 ============================================ */
 /* =============================================
    ============================================= */
@@ -51,6 +51,8 @@ ul { list-style: none; }
 /* ロゴ（左端・余白で他を押し出す） */
 .logo { display: flex; align-items: center; flex-shrink: 0; margin-right: auto; }
 .logo-img { height: 34px; width: auto; object-fit: contain; filter: url(#logo-edge-soften); }
+.event-venue, .tt-venue { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; }
+.event-info-item { display: inline-block; white-space: nowrap; }
 .logo-text { font-family: var(--font-en); font-size: 1.3rem; letter-spacing: 0.05em; background: var(--accent-grd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 /* サイト切り替えボタン（常時表示・青系） */
