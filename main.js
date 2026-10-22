@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 70
+   VERSION   : 74
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -263,7 +263,9 @@
      TEAMS（通常ブロック／U-18ブロック）
   ============================================================ */
   const teamsGrid = document.getElementById('teams-grid');
-  teams.forEach(name => {
+  // 出演者発表（phase 4）より前は、保存済みの旧チーム名も描画しない。
+  const publishedTeams = phase === '4' ? (teams || []) : [];
+  publishedTeams.forEach(name => {
     const card = document.createElement('div');
     card.className = 'team-card reveal';
     card.innerHTML = `<span>${name}</span>`;
@@ -271,13 +273,22 @@
   });
 
   const teamsU18Grid = document.getElementById('teams-u18-grid');
-  const teamsU18 = data.teams_u18 || [];
+  const teamsU18 = phase === '4' ? (data.teams_u18 || []) : [];
   teamsU18.forEach(name => {
     const card = document.createElement('div');
     card.className = 'team-card reveal';
     card.innerHTML = `<span>${name}</span>`;
     teamsU18Grid.appendChild(card);
   });
+
+  if (phase !== '4') {
+    document.getElementById('teams').style.display = 'none';
+    document.querySelectorAll('#nav-list a').forEach(a => {
+      if (a.getAttribute('href') === '#teams') {
+        a.parentElement.style.display = 'none';
+      }
+    });
+  }
 
   /* ============================================================
      ENTRY（フェーズ対応）
@@ -514,5 +525,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 70
+   VERSION   : 74
 ============================================ */
