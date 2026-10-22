@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 60
+   VERSION   : 62
 ============================================ */
 (async () => {
   let data;
@@ -488,7 +488,7 @@
       { label: 'TEAMS', href: '#teams' },
       { label: 'JUDGES', href: '#judges' },
       { label: 'TIMETABLE', href: '#timetable' },
-      { label: 'RULES', href: '#rules' },
+      { label: 'ENTRY', href: '#rules' },
       { label: 'ABOUT', href: '#about' },
       { label: 'Q&A', href: '#qa' },
     ];
@@ -551,5 +551,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 60
+   VERSION   : 62
 ============================================ */

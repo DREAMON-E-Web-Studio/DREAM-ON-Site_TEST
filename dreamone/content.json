@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ONE! (ドリワン)",
-    "version": "61"
+    "version": "62"
   },
   "site": {
     "title": "DREAM ONE!",
@@ -151,7 +151,7 @@
       "href": "#about"
     },
     {
-      "label": "RULES",
+      "label": "ENTRY",
       "href": "#rules"
     },
     {
