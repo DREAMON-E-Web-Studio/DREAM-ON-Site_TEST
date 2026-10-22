@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 76
+   VERSION   : 77
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -168,7 +168,7 @@
     phaseHTML += `<div class="phase-headline phase-${phase}">${pt.headline}</div>`;
   }
 
-  phaseHTML += `<div class="phase-note">${pt.note}</div>`;
+  phaseHTML += `<div class="phase-note${phase === '1' ? ' phase-note--entry-opening' : ''}">${pt.note}</div>`;
   phaseEl.innerHTML = phaseHTML;
 
   // ボタンの出し分け
@@ -526,5 +526,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 76
+   VERSION   : 77
 ============================================ */
