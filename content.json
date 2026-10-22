@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ON! (ドリオン)",
-    "version": "75"
+    "version": "76"
   },
   "site": {
     "title": "DREAM ON!",
@@ -24,13 +24,14 @@
     "anniversary": "新章スタート",
     "catchcopy": "15年・30回の歴史を超え、新たな舞台へ。",
     "date": "2027.01.17（Sun）",
-    "venue": "COMING SOON",
-    "venue_url": "",
-    "open": "OPEN COMING SOON",
-    "start": "START COMING SOON",
+    "venue": "GARDEN 新木場FACTORY",
+    "venue_url": "https://garden-shinkiba-factory.com/",
+    "open": "COMING SOON",
+    "start": "COMING SOON",
+    "open_start": "OPEN / START：COMING SOON",
     "ticket_price": "前売り 3,000円",
     "ticket_note": "1ドリンク別",
-    "message": "15年・30回の歴史を積み重ねてきたDREAM ON!が、新たなステージへ踏み出します。\n\n会場・開場時間・開演時間は決まり次第お知らせします。\n\nステージの熱量そのままに、今まで以上に一体感のある空間で、K-POPカバーダンスの祭典をお届けします。",
+    "message": "15年・30回の歴史を積み重ねてきたDREAM ON!が、新たなステージへ踏み出します。\n\n会場はGARDEN 新木場FACTORY。\n開場時間・開演時間は決まり次第お知らせします。\n\nステージの熱量そのままに、今まで以上に一体感のある空間で、K-POPカバーダンスの祭典をお届けします。",
     "youtube_embed": "https://player.vimeo.com/video/1210406119"
   },
   "about": {

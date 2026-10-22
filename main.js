@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 75
+   VERSION   : 76
 ============================================ */
 /* =============================================
    DREAM ON! – main.js
@@ -130,9 +130,10 @@
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
 
   // フェーズ0（公開前・次回未定）では開催日・会場は非表示
+  const eventTimes = event.open_start || `${event.open} / ${event.start}`;
   document.getElementById('hero-info').innerHTML = (phase === '0') ? '' : `
     <div class="event-date">${event.date}</div>
-    <div class="event-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${event.open}</span><span class="event-info-item">${event.start}</span></div>
+    <div class="event-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${eventTimes}</span></div>
   `;
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
@@ -236,7 +237,7 @@
   ============================================================ */
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
-    <div class="tt-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${event.open}</span><span class="event-info-item">${event.start}</span></div>
+    <div class="tt-venue"><span class="event-info-item">会場：${event.venue}</span><span class="event-info-item">${eventTimes}</span></div>
   `;
 
   const ttList = document.getElementById('timetable-list');
@@ -525,5 +526,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ON! (ドリオン)
-   VERSION   : 75
+   VERSION   : 76
 ============================================ */
