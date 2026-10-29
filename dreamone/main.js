@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 68
+   VERSION   : 69
 ============================================ */
 (async () => {
   let data;
@@ -82,22 +82,23 @@
     }
   }
 
+  const phase = data.phase || '2';
+  // 出演者はフェーズ4・5、出演順と開場・開演時刻はフェーズ5だけ公開する。
+  const announcementPublished = phase === '4' || phase === '5';
+  const performanceOrderPublished = phase === '5';
+
   // HERO
   document.getElementById('hero-catchcopy').textContent = event.catchcopy;
   document.getElementById('hero-vol-badge').textContent = `Vol.${event.vol} — ${event.anniversary}`;
   document.getElementById('hero-info').innerHTML = `
     <div class="event-date">${event.date}</div>
-    <div class="event-times"><span>${event.open}</span><span>/ ${event.start}</span></div>
+    ${performanceOrderPublished ? `<div class="event-times"><span>${event.open}</span><span>/ ${event.start}</span></div>` : ''}
     <div class="event-venue">@ ${event.venue}</div>
   `;
 
   /* ============================================================
      PHASE（フェーズ切り替え）
   ============================================================ */
-  const phase = data.phase || '2';
-  // 出演者はフェーズ4・5、出演順はフェーズ5だけ公開する。
-  const announcementPublished = phase === '4' || phase === '5';
-  const performanceOrderPublished = phase === '5';
   const pt = (data.phase_text && data.phase_text[phase]) || { headline: '', note: '' };
   const phaseEl = document.getElementById('hero-phase');
   const ctaEl = document.getElementById('hero-cta');
@@ -573,5 +574,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 68
+   VERSION   : 69
 ============================================ */
