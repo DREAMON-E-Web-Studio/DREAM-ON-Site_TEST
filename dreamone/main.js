@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 64
+   VERSION   : 65
 ============================================ */
 (async () => {
   let data;
@@ -489,7 +489,7 @@
   if (phase === '4') {
     const main = document.getElementById('main-content');
     if (main) {
-      const order = ['teams', 'judges', 'timetable', 'rules', 'about', 'qa'];
+      const order = ['teams', 'timetable', 'judges', 'rules', 'about', 'qa'];
       order.forEach(id => {
         const el = document.getElementById(id);
         if (el) main.appendChild(el);
@@ -500,8 +500,8 @@
     navList.innerHTML = '';
     const phase4Nav = [
       { label: 'TEAMS', href: '#teams' },
-      { label: 'JUDGES', href: '#judges' },
       { label: '出演順', href: '#timetable' },
+      { label: 'JUDGES', href: '#judges' },
       { label: 'ENTRY', href: '#rules' },
       { label: 'ABOUT', href: '#about' },
       { label: 'Q&A', href: '#qa' },
@@ -565,5 +565,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 64
+   VERSION   : 65
 ============================================ */
