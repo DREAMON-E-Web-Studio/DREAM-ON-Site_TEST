@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 63
+   VERSION   : 64
 ============================================ */
 /* =============================================
    DREAM ONE! – Style
@@ -305,7 +305,7 @@ ul { list-style: none; }
 /* ============================================
    FILE TYPE : CSS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 63
+   VERSION   : 64
 ============================================ */
 
 /* ---------- 審査員 ---------- */
@@ -313,6 +313,7 @@ ul { list-style: none; }
 .judge-card { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; transition: transform 0.2s; width: 100%; max-width: 400px; min-width: 0; }
 .announcement-poster { display: block; width: 100%; max-width: 600px; padding: 0; border: 0; border-radius: 12px; background: transparent; cursor: zoom-in; }
 .announcement-poster img { display: block; width: 100%; height: auto; border-radius: inherit; }
+.performance-order-poster { max-width: none; }
 .announcement-poster:focus-visible, .judge-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .judge-card:hover { transform: translateY(-4px); }
 .judge-card:active { transform: scale(0.97); }

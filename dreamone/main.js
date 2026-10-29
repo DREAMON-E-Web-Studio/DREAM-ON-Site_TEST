@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 62
+   VERSION   : 64
 ============================================ */
 (async () => {
   let data;
@@ -317,17 +317,31 @@
     });
   }
 
-  // TIMETABLE
+  // 出演順（既存の#timetableリンクは維持）
   document.getElementById('timetable-header').innerHTML = `
     <div class="tt-date">${event.date}</div>
     <div class="tt-venue">${event.venue}</div>
   `;
   const ttList = document.getElementById('timetable-list');
-  if (!timetable || timetable.length === 0) {
+  if (announcementPublished && data.performance_order_poster) {
+    const orderButton = document.createElement('button');
+    orderButton.type = 'button';
+    orderButton.className = 'announcement-poster performance-order-poster reveal';
+    orderButton.setAttribute('aria-label', '出演順の画像を拡大');
+    const orderImage = document.createElement('img');
+    orderImage.src = data.performance_order_poster;
+    orderImage.alt = `DREAM ONE! Vol.${event.vol} 出演順。OPEN 15:00〜、START 16:00〜。1部16:00〜、2部17:15〜。クリックで拡大できます。`;
+    orderImage.loading = 'lazy';
+    orderButton.appendChild(orderImage);
+    orderButton.addEventListener('click', () => openJudgePopup({
+      name: '出演順', image: data.performance_order_poster, profile: ''
+    }));
+    ttList.appendChild(orderButton);
+  } else if (!timetable || timetable.length === 0) {
     ttList.innerHTML = `
       <div class="coming-soon-box reveal">
         <div class="coming-soon-text">COMING SOON</div>
-        <div class="coming-soon-sub">タイムテーブルは決まり次第発表いたします</div>
+        <div class="coming-soon-sub">出演順は決まり次第発表いたします</div>
       </div>`;
   } else {
     timetable.forEach(row => {
@@ -487,7 +501,7 @@
     const phase4Nav = [
       { label: 'TEAMS', href: '#teams' },
       { label: 'JUDGES', href: '#judges' },
-      { label: 'TIMETABLE', href: '#timetable' },
+      { label: '出演順', href: '#timetable' },
       { label: 'ENTRY', href: '#rules' },
       { label: 'ABOUT', href: '#about' },
       { label: 'Q&A', href: '#qa' },
@@ -551,5 +565,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 62
+   VERSION   : 64
 ============================================ */
