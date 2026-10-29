@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 65
+   VERSION   : 66
 ============================================ */
 (async () => {
   let data;
@@ -318,10 +318,6 @@
   }
 
   // 出演順（既存の#timetableリンクは維持）
-  document.getElementById('timetable-header').innerHTML = `
-    <div class="tt-date">${event.date}</div>
-    <div class="tt-venue">${event.venue}</div>
-  `;
   const ttList = document.getElementById('timetable-list');
   if (announcementPublished && data.performance_order_poster) {
     const orderButton = document.createElement('button');
@@ -565,5 +561,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 65
+   VERSION   : 66
 ============================================ */
