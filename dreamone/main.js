@@ -1,7 +1,7 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 66
+   VERSION   : 67
 ============================================ */
 (async () => {
   let data;
@@ -87,6 +87,7 @@
   document.getElementById('hero-vol-badge').textContent = `Vol.${event.vol} — ${event.anniversary}`;
   document.getElementById('hero-info').innerHTML = `
     <div class="event-date">${event.date}</div>
+    <div class="event-times"><span>${event.open}</span><span>/ ${event.start}</span></div>
     <div class="event-venue">@ ${event.venue}</div>
   `;
 
@@ -561,5 +562,5 @@
 /* ============================================
    FILE TYPE : JS
    SITE      : DREAM ONE! (ドリワン)
-   VERSION   : 66
+   VERSION   : 67
 ============================================ */

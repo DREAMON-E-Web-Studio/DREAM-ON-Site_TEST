@@ -2,7 +2,7 @@
   "_meta": {
     "file_type": "JSON",
     "site": "DREAM ONE! (ドリワン)",
-    "version": "66"
+    "version": "67"
   },
   "site": {
     "title": "DREAM ONE!",
@@ -26,8 +26,8 @@
     "date": "2026.11.23（Mon・祝）",
     "venue": "和光市民文化センター\nサンアゼリア大ホール",
     "venue_url": "https://www.sunazalea.or.jp/",
-    "open": "OPEN COMING SOON",
-    "start": "START COMING SOON",
+    "open": "OPEN 15:00〜",
+    "start": "START 16:00〜",
     "entry_period": "9月14日（月）〜10月14日（水）",
     "ticket_general": "3,000円（当日・会場にて）",
     "ticket_relation": "2,500円（出場者からご購入）",
